@@ -3,6 +3,8 @@ package com.ktxdevelopment.siratumustakim.controller;
 
 import com.ktxdevelopment.siratumustakim.model.entities.post.Post;
 import com.ktxdevelopment.siratumustakim.service.post.PostService;
+import com.ktxdevelopment.siratumustakim.util.CustomResponseModel;
+import com.ktxdevelopment.siratumustakim.util.RestResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,11 +19,11 @@ public class PostController {
     private PostService postService;
 
     @GetMapping("/posts")
-    public ResponseEntity<List<Post>> getAllPostsPaginated(
+    public ResponseEntity<CustomResponseModel<List<Post>>> getAllPostsPaginated(
             @RequestParam(name = "p", defaultValue = "0") int page,
             @RequestParam(name = "l", defaultValue = "20") int limit) {
 
-        return ResponseEntity.ok(postService);
+        return RestResponse.ok(postService.getPostsPaginated(page, limit));
     }
 
     @GetMapping("/posts/trending")
