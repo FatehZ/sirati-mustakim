@@ -3,10 +3,11 @@ package com.ktxdevelopment.siratumustakim.service.user;
 
 import com.ktxdevelopment.siratumustakim.model.entities.role.Role;
 import com.ktxdevelopment.siratumustakim.model.entities.user.User;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-interface UserManagementService {
+public interface UserRepository extends CrudRepository<User, Long> {
 
     User saveUser(User user);
 
@@ -14,7 +15,7 @@ interface UserManagementService {
 
     void addRoleToUser(String username, String roleName);
 
-    User getUser(String username);
+    User getUserByUsername(String username);
 
-    List<User> getUsers();
+    List<User> getAllUsers();
 }

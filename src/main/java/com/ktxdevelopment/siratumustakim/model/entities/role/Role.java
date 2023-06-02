@@ -6,7 +6,8 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 //@Entity(name = "role")
-@Table(name = "role")
+@Table(name = "roles")
+@Entity
 @Data
 @Builder
 public class Role {
