@@ -1,6 +1,6 @@
-package com.ktxdevelopment.siratumustakim.model.entities.user;
+package com.ktxdevelopment.siratumustakim.model.user;
 
-import com.ktxdevelopment.siratumustakim.model.entities.role.Role;
+import com.ktxdevelopment.siratumustakim.model.role.entity.Role;
 import jakarta.persistence.*;
 import lombok.Data;
 

@@ -1,7 +1,7 @@
 package com.ktxdevelopment.siratumustakim.service.security;
 
-import com.ktxdevelopment.siratumustakim.model.entities.role.Role;
-import com.ktxdevelopment.siratumustakim.model.entities.user.User;
+import com.ktxdevelopment.siratumustakim.model.role.entity.Role;
+import com.ktxdevelopment.siratumustakim.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

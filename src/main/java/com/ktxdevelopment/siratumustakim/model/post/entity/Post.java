@@ -1,7 +1,8 @@
-package com.ktxdevelopment.siratumustakim.model.entities.post;
+package com.ktxdevelopment.siratumustakim.model.post.entity;
 
-import com.ktxdevelopment.siratumustakim.model.entities.category.Category;
+import com.ktxdevelopment.siratumustakim.model.category.Category;
 import com.ktxdevelopment.siratumustakim.model.entities.tag.Tag;
+import com.ktxdevelopment.siratumustakim.model.user.User;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -11,8 +12,8 @@ import java.util.ArrayList;
 
 @Builder
 @Data
-//@Entity(name = "post")
-@Table(name = "post")
+//@Entity(name = "posts")
+@Table(name = "posts")
 public class Post {
 
         @Id
@@ -42,7 +43,7 @@ public class Post {
         String content;
 
         @ManyToMany
-        ArrayList<String> authors; //todo
+        ArrayList<User> authors; //todo
 
         @Column(name = "date")
         String date;

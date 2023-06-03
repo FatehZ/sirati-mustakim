@@ -1,7 +1,7 @@
 package com.ktxdevelopment.siratumustakim.controller;
 
 
-import com.ktxdevelopment.siratumustakim.model.entities.post.Post;
+import com.ktxdevelopment.siratumustakim.model.post.entity.Post;
 import com.ktxdevelopment.siratumustakim.service.post.PostService;
 import com.ktxdevelopment.siratumustakim.util.CustomResponseModel;
 import com.ktxdevelopment.siratumustakim.util.RestResponse;

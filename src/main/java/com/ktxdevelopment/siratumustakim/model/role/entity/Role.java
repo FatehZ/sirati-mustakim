@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratumustakim.model.entities.role;
+package com.ktxdevelopment.siratumustakim.model.role.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -7,14 +7,13 @@ import org.hibernate.annotations.GenericGenerator;
 
 //@Entity(name = "role")
 @Table(name = "roles")
-@Entity
 @Data
 @Builder
 public class Role {
 
     @Id
     @Column
-    @GeneratedValue(strategy = GenerationType.UUID) //todo
+    @GeneratedValue(strategy = GenerationType.UUID)
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     private String id;
 
