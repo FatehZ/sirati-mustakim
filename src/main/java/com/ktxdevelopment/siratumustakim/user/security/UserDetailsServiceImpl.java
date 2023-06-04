@@ -1,7 +1,7 @@
-package com.ktxdevelopment.siratumustakim.service.security;
+package com.ktxdevelopment.siratumustakim.user.security;
 
-import com.ktxdevelopment.siratumustakim.model.user.User;
-import com.ktxdevelopment.siratumustakim.service.user.UserRepository;
+import com.ktxdevelopment.siratumustakim.user.model.User;
+import com.ktxdevelopment.siratumustakim.user.service.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

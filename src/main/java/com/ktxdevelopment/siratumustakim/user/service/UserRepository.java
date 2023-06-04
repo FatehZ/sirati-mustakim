@@ -1,8 +1,8 @@
-package com.ktxdevelopment.siratumustakim.service.user;
+package com.ktxdevelopment.siratumustakim.user.service;
 
 
-import com.ktxdevelopment.siratumustakim.model.role.entity.Role;
-import com.ktxdevelopment.siratumustakim.model.user.User;
+import com.ktxdevelopment.siratumustakim.role.entity.Role;
+import com.ktxdevelopment.siratumustakim.user.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

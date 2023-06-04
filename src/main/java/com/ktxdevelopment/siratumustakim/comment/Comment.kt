@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratumustakim.model.comment
+package com.ktxdevelopment.siratumustakim.comment
 
 data class Comment(
     var id : Int,

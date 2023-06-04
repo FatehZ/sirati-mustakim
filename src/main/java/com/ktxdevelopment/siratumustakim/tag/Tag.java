@@ -1,6 +1,6 @@
-package com.ktxdevelopment.siratumustakim.model.tag;
+package com.ktxdevelopment.siratumustakim.tag;
 
-import com.ktxdevelopment.siratumustakim.model.post.entity.Post;
+import com.ktxdevelopment.siratumustakim.post.entity.Post;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;

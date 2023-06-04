@@ -1,8 +1,7 @@
-package com.ktxdevelopment.siratumustakim.controller;
+package com.ktxdevelopment.siratumustakim.post;
 
 
-import com.ktxdevelopment.siratumustakim.model.post.entity.Post;
-import com.ktxdevelopment.siratumustakim.service.post.PostService;
+import com.ktxdevelopment.siratumustakim.post.entity.Post;
 import com.ktxdevelopment.siratumustakim.util.CustomResponseModel;
 import com.ktxdevelopment.siratumustakim.util.RestResponse;
 import lombok.RequiredArgsConstructor;

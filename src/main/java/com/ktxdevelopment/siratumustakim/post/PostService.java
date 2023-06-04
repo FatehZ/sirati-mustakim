@@ -1,7 +1,6 @@
-package com.ktxdevelopment.siratumustakim.service.post;
+package com.ktxdevelopment.siratumustakim.post;
 
-import com.ktxdevelopment.siratumustakim.model.post.entity.Post;
-import org.springframework.data.jpa.repository.Query;
+import com.ktxdevelopment.siratumustakim.post.entity.Post;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratumustakim.model.role.entity;
+package com.ktxdevelopment.siratumustakim.role.entity;
 
 import jakarta.persistence.*;
 import lombok.Builder;
