@@ -1,8 +1,9 @@
-package com.ktxdevelopment.siratumustakim.post.entity;
+package com.ktxdevelopment.siratumustakim.post.model.entity;
 
 import com.ktxdevelopment.siratumustakim.category.Category;
 import com.ktxdevelopment.siratumustakim.model.entities.tag.Tag;
 import com.ktxdevelopment.siratumustakim.user.model.User;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -17,10 +18,14 @@ import java.util.ArrayList;
 public class Post {
 
         @Id
+        @GeneratedValue
+        @Column(name = "id")
+        Integer id;
+
+        @Column(name = "post_id")
         @GeneratedValue(generator = "uuid2")
         @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-        @Column(name = "id")
-        String id;
+        String postId;
 
         @Column(name = "title")
         String title;

@@ -1,11 +1,12 @@
 package com.ktxdevelopment.siratumustakim.util;
 
+import jakarta.annotation.Nullable;
 import org.springframework.http.HttpStatus;
 
 public class CustomResponseModel<T> {  //todo can add timestamp to response
-    HttpStatus status;
-    T data;
-    String error;
+    private final HttpStatus status;
+    private final T data;
+    private final RestError error;
 
     public CustomResponseModel(T data, HttpStatus status) {
         this.status = status;
@@ -13,9 +14,21 @@ public class CustomResponseModel<T> {  //todo can add timestamp to response
         this.error = null;
     }
 
-    public CustomResponseModel(String error, HttpStatus status) {
+    public CustomResponseModel(RestError error, HttpStatus status) {
         this.status = status;
         this.error = error;
+        this.data = null;
+    }
+
+    public CustomResponseModel(Exception ex, HttpStatus status) {
+        this.status = status;
+        this.error = new RestError(ex.getClass().toString(), ex.getLocalizedMessage());
+        this.data = null;
+    }
+
+    public CustomResponseModel(String errorTitle, String errorMessage, HttpStatus status) {
+        this.status = status;
+        this.error = new RestError(errorTitle,errorMessage);
         this.data = null;
     }
 
@@ -25,10 +38,9 @@ public class CustomResponseModel<T> {  //todo can add timestamp to response
         this.status = HttpStatus.OK;
     }
 
-    public CustomResponseModel(String error) {
+    public CustomResponseModel(RestError error) {
         this.error = error;
         this.data = null;
-        this.error = error;
-        this.status = HttpStatus.OK;
+        this.status = HttpStatus.BAD_REQUEST;
     }
 }

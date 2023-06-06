@@ -1,7 +1,7 @@
 package com.ktxdevelopment.siratumustakim.category;
 
 
-import com.ktxdevelopment.siratumustakim.post.entity.Post;
+import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package com.ktxdevelopment.siratumustakim.post;
 
 
-import com.ktxdevelopment.siratumustakim.post.entity.Post;
+import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
 import com.ktxdevelopment.siratumustakim.util.CustomResponseModel;
 import com.ktxdevelopment.siratumustakim.util.RestResponse;
 import lombok.RequiredArgsConstructor;
@@ -34,5 +34,4 @@ public class PostController {
     public ResponseEntity<Post> insertNewPost() {
         return null;
     }
-
 }
