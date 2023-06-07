@@ -1,9 +1,8 @@
 package com.ktxdevelopment.siratumustakim.post.model.entity;
 
 import com.ktxdevelopment.siratumustakim.category.Category;
-import com.ktxdevelopment.siratumustakim.model.entities.tag.Tag;
-import com.ktxdevelopment.siratumustakim.user.model.User;
-import jakarta.annotation.Nullable;
+import com.ktxdevelopment.siratumustakim.tag.model.entity.Tag;
+import com.ktxdevelopment.siratumustakim.auth.user.model.User;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -50,8 +49,12 @@ public class Post {
         @ManyToMany
         ArrayList<User> authors; //todo
 
-        @Column(name = "date")
-        String date;
+        @Column(name = "dateAdded")
+        String dateAdded;
+
+
+        @Column(name = "dateUpdated")
+        String dateUpdated;
 
         @Column(name = "references")
         ArrayList<String> references;

@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sirati-mustakim
+    username: postgres
+    password: neon
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddlAuto: create-drop
+    showSql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    databasePlatform: org.hibernate.dialect.PostgreSQLDialect
+
+application:
+  security:
+    jwt:
+      secret-key: 1111111111111
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days

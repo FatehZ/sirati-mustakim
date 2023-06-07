@@ -8,7 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import java.util.ArrayList;
 
-@Table(name = "tag")
+@Table(name = "tags")
 //@Entity(name = "tag")
 @Data
 @Builder

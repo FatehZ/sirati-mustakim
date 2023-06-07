@@ -1,0 +1,12 @@
+package com.ktxdevelopment.siratumustakim.auth.user.service;
+
+import com.ktxdevelopment.siratumustakim.auth.user.model.User;
+
+public interface UserService {
+
+    User findUserById(String userId);
+
+    User findByUsername(String username);
+
+    User findByEmail(String email);
+}
