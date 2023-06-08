@@ -4,14 +4,18 @@ import com.ktxdevelopment.siratumustakim.category.Category;
 import com.ktxdevelopment.siratumustakim.tag.model.entity.Tag;
 import com.ktxdevelopment.siratumustakim.auth.user.model.User;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.ArrayList;
 
 @Builder
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 //@Entity(name = "posts")
 @Table(name = "posts")
 public class Post {
@@ -43,7 +47,7 @@ public class Post {
         @ManyToOne
         Category category;
 
-        @Column(name = "content")
+        @Column(name = "content", nullable = false)
         String content;
 
         @ManyToMany
