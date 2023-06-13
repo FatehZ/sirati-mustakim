@@ -2,6 +2,7 @@ package com.ktxdevelopment.siratumustakim.post;
 
 
 import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
+import com.ktxdevelopment.siratumustakim.post.service.PostService;
 import com.ktxdevelopment.siratumustakim.util.CustomResponseModel;
 import com.ktxdevelopment.siratumustakim.util.RestResponse;
 import lombok.RequiredArgsConstructor;
@@ -26,12 +27,7 @@ public class PostController {
     }
 
     @GetMapping("/posts/trending")
-    public ResponseEntity<List<Post>> getTrendingPosts() {
-        return null;
-    }
-
-    @PostMapping("/posts")
-    public ResponseEntity<Post> insertNewPost() {
-        return null;
+    public ResponseEntity<CustomResponseModel<List<Post>>> getTrendingPosts() {
+        return RestResponse.ok(postService.getTrendingPosts());
     }
 }

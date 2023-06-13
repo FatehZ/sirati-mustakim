@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratumustakim.config;
+package com.ktxdevelopment.siratumustakim.auth.security.config;
 
 import com.ktxdevelopment.siratumustakim.auth.user.repo.UserRepository;
 import lombok.RequiredArgsConstructor;

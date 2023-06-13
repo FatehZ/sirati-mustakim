@@ -12,10 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-@Getter
 @Setter
-@ToString
-@RequiredArgsConstructor
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,6 +22,7 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue
+    @Getter
     @Column(name = "id", nullable = false)
     private Integer id;
 

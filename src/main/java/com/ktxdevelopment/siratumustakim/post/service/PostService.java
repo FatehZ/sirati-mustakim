@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratumustakim.post;
+package com.ktxdevelopment.siratumustakim.post.service;
 
 import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
 import org.springframework.data.repository.CrudRepository;
@@ -7,12 +7,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public interface PostService extends CrudRepository<Post, Integer> {
+public interface PostService {
 
 
-//    @Query("SELECT id FROM posts")
     List<Post> getPostsPaginated(int page, int limit);
 
 
-
+    List<Post> getTrendingPosts();
 }

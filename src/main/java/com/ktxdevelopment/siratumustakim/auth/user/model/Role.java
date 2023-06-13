@@ -12,30 +12,24 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public enum Role {
 
-  USER(Collections.emptySet()),
+  GUEST(Collections.emptySet()),
 
-  ADMIN(Set.of(Permission.ADMIN_READ,
-          Permission.ADMIN_UPDATE,
-          Permission.ADMIN_DELETE,
-          Permission.ADMIN_CREATE,
-          Permission.MANAGER_READ,
-          Permission.MANAGER_UPDATE,
-          Permission.MANAGER_DELETE,
-          Permission.MANAGER_CREATE)),
 
-  MANAGER(Set.of(Permission.MANAGER_READ,
-                  Permission.MANAGER_UPDATE,
-                  Permission.MANAGER_DELETE,
-                  Permission.MANAGER_CREATE));
+  USER(Set.of("USER", GUEST.name())),
+
+  MANAGER(Set.of("MANAGER" ,GUEST.name(), USER.name())),
+
+  ADMIN(Set.of("ADMIN", MANAGER.name(), USER.name(), GUEST.name()));
+
+
   @Getter
-  private final Set<Permission> permissions;
+  private final Set<String> permissions;
 
   public List<SimpleGrantedAuthority> getAuthorities() {
-    var authorities = getPermissions()
+    return getPermissions()
             .stream()
-            .map(permission -> new SimpleGrantedAuthority(permission.getPermission()))
+            .map(SimpleGrantedAuthority::new)
             .collect(Collectors.toList());
-    authorities.add(new SimpleGrantedAuthority("ROLE_" + this.name()));
-    return authorities;
   }
 }
+
