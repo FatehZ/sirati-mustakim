@@ -1,7 +1,6 @@
 package com.ktxdevelopment.siratumustakim.post.service;
 
 import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

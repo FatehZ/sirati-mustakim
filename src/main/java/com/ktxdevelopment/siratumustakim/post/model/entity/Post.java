@@ -1,6 +1,6 @@
 package com.ktxdevelopment.siratumustakim.post.model.entity;
 
-import com.ktxdevelopment.siratumustakim.category.Category;
+import com.ktxdevelopment.siratumustakim.category.model.entity.Category;
 import com.ktxdevelopment.siratumustakim.tag.model.entity.Tag;
 import com.ktxdevelopment.siratumustakim.auth.user.model.User;
 import jakarta.persistence.*;

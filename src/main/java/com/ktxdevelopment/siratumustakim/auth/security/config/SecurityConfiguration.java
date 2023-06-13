@@ -14,7 +14,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
-import static com.ktxdevelopment.siratumustakim.auth.user.model.Permission.*;
 import static com.ktxdevelopment.siratumustakim.auth.user.model.Role.*;
 import static org.springframework.http.HttpMethod.*;
 
@@ -29,21 +28,35 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
     private final LogoutHandler logoutHandler;
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers(
-                        "/api/v1/auth/**",
-                        "/swagger-resources",
-                        "/swagger-resources/**"
-                ).permitAll()
-                .requestMatchers( "/api/v1/admin/**").hasRole(ADMIN.name())
-                .requestMatchers(GET, "/api/v1/admin/**").hasRole(ADMIN_READ.name())
-                .requestMatchers(POST, "/api/v1/admin/**").hasRole(ADMIN_UPDATE.name())
-                .requestMatchers(PUT, "/api/v1/admin/**").hasRole(ADMIN_CREATE.name())
-                .requestMatchers(DELETE, "/api/v1/admin/**").hasRole(ADMIN_DELETE.name())
+                .requestMatchers("/api/v1/auth/**").hasRole(GUEST.name()) //todo permitAll()
+                .requestMatchers( "/api/v1/posts/**").hasRole(GUEST.name())
+                .requestMatchers(GET, "/api/v1/posts/**").hasRole(GUEST.name())
+                .requestMatchers(POST, "/api/v1/posts/**").hasRole(MANAGER.name())
+                .requestMatchers(PUT, "/api/v1/posts/**").hasRole(MANAGER.name())
+                .requestMatchers(DELETE, "/api/v1/posts/**").hasRole(MANAGER.name())
+
+                .requestMatchers( "/api/v1/categories/**").hasRole(GUEST.name())
+                .requestMatchers(GET, "/api/v1/categories/**").hasRole(GUEST.name())
+                .requestMatchers(POST, "/api/v1/categories/**").hasRole(MANAGER.name())
+                .requestMatchers(PUT, "/api/v1/categories/**").hasRole(MANAGER.name())
+                .requestMatchers(DELETE, "/api/v1/categories/**").hasRole(MANAGER.name())
+
+                .requestMatchers( "/api/v1/tags/**").hasRole(GUEST.name())
+                .requestMatchers(GET, "/api/v1/tags/**").hasRole(GUEST.name())
+                .requestMatchers(POST, "/api/v1/tags/**").hasRole(MANAGER.name())
+                .requestMatchers(PUT, "/api/v1/tags/**").hasRole(MANAGER.name())
+                .requestMatchers(DELETE, "/api/v1/tags/**").hasRole(MANAGER.name())
+
+                .requestMatchers( "/api/v1/users/**").hasRole(MANAGER.name())
+                .requestMatchers(GET, "/api/v1/users/**").hasRole(MANAGER.name())
+                .requestMatchers(POST, "/api/v1/users/**").hasRole(ADMIN.name())
+                .requestMatchers(PUT, "/api/v1/users/**").hasRole(ADMIN.name())
+                .requestMatchers(DELETE, "/api/v1/users/**").hasRole(ADMIN.name())
+
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

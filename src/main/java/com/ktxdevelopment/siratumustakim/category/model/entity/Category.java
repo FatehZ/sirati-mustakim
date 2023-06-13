@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratumustakim.category;
+package com.ktxdevelopment.siratumustakim.category.model.entity;
 
 
 import com.ktxdevelopment.siratumustakim.post.model.entity.Post;

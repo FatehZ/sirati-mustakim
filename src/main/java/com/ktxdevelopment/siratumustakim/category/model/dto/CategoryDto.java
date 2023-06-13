@@ -1,8 +1,8 @@
-package com.ktxdevelopment.siratumustakim.post.model.dto;
+package com.ktxdevelopment.siratumustakim.category.model.dto;
 
+import com.ktxdevelopment.siratumustakim.auth.user.model.User;
 import com.ktxdevelopment.siratumustakim.category.model.entity.Category;
 import com.ktxdevelopment.siratumustakim.tag.model.dto.TagDto;
-import com.ktxdevelopment.siratumustakim.auth.user.model.User;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 @Builder
 @Data
-public class PostDto {
+public class CategoryDto {
         Integer id;
         String postId;
         String title;
