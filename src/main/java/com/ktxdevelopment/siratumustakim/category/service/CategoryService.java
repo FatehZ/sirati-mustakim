@@ -9,5 +9,5 @@ public interface CategoryService {
 
     List<Category> getAllCategories();
 
-    Category getCategoryById(Integer id) throws CategoryNotFoundException;
+    Category getCategoryByCategoryId(String categoryId) throws CategoryNotFoundException;
 }

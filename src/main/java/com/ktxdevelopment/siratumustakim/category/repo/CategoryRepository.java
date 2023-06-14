@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface CategoryRepository extends
         CrudRepository<Category, Integer>,
         JpaRepository<Category, Integer> {
+
+    Optional<Category> findCategoryByCategoryId(String categoryId);
 }

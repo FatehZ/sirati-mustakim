@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratumustakim.post;
+package com.ktxdevelopment.siratumustakim.post.controller;
 
 
 import com.ktxdevelopment.siratumustakim.post.model.entity.Post;

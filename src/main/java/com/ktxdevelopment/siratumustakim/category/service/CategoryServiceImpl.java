@@ -21,12 +21,9 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category getCategoryById(Integer id) throws CategoryNotFoundException {
-        var category = categoryRepository.findById(id);
-        if (category.isEmpty()) {
-            throw new CategoryNotFoundException();
-        }
-
+    public Category getCategoryByCategoryId(String id) throws CategoryNotFoundException {
+        var category = categoryRepository.findCategoryByCategoryId(id);
+        if (category.isEmpty()) {throw new CategoryNotFoundException();}
         return category.get();
     }
 }
