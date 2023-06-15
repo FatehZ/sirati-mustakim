@@ -20,10 +20,14 @@ import java.util.ArrayList;
 @Builder
 public class Tag {
 
-    @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id")
+    private String tagId;
+
+
+    @Id
+    @GeneratedValue
     private String id;
 
     @Column(name = "title")
