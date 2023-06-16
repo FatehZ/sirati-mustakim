@@ -1,5 +1,6 @@
 package com.ktxdevelopment.siratumustakim.tag.service;
 
+import com.ktxdevelopment.siratumustakim.exceptions.TagNotFoundException;
 import com.ktxdevelopment.siratumustakim.tag.model.entity.Tag;
 import com.ktxdevelopment.siratumustakim.tag.repo.TagRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +18,9 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public Tag findTagByTagId(String tagId) {
-        return tagRepository.findTagByTagId(tagId);
-        ;
+    public Tag getTagByTagId(String tagId) throws TagNotFoundException {
+        var tag = tagRepository.findTagByTagId(tagId);
+        if (tagId.isEmpty()) {throw new TagNotFoundException(); }
+        return tagRepository.findTagByTagId(tagId).get();
     }
 }

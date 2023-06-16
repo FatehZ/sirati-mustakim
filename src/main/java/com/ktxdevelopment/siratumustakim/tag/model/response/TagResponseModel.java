@@ -5,7 +5,7 @@ import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
 import java.util.ArrayList;
 
 public class TagResponseModel {
-    private String id;
+    private String tagId;
     private String title;
     private String description;
 }

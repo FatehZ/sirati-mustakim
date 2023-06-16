@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @Builder
 public class TagWithPostsResponseModel {
-    private String id;
+    private String tagId;
     private String title;
     private ArrayList<Post> posts;
     private String description;
