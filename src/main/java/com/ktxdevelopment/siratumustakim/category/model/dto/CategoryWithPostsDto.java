@@ -7,5 +7,5 @@ import java.util.List;
 public class CategoryWithPostsDto {
     private Integer id;
     private String categoryId;
-    private List<PostDto>
+    private List<PostDto> posts;
 }

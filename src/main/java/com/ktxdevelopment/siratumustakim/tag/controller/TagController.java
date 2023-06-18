@@ -1,12 +1,11 @@
 package com.ktxdevelopment.siratumustakim.tag.controller;
 
 
-import com.ktxdevelopment.siratumustakim.category.model.entity.Category;
 import com.ktxdevelopment.siratumustakim.exceptions.TagNotFoundException;
 import com.ktxdevelopment.siratumustakim.tag.model.entity.Tag;
 import com.ktxdevelopment.siratumustakim.tag.service.TagService;
-import com.ktxdevelopment.siratumustakim.util.CustomResponseModel;
-import com.ktxdevelopment.siratumustakim.util.RestResponse;
+import com.ktxdevelopment.siratumustakim.util.response.CustomResponseModel;
+import com.ktxdevelopment.siratumustakim.util.response.RestResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

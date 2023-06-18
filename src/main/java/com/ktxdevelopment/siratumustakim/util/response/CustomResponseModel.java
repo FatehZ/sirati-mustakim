@@ -1,6 +1,5 @@
-package com.ktxdevelopment.siratumustakim.util;
+package com.ktxdevelopment.siratumustakim.util.response;
 
-import jakarta.annotation.Nullable;
 import org.springframework.http.HttpStatus;
 
 public class CustomResponseModel<T> {  //todo can add timestamp to response

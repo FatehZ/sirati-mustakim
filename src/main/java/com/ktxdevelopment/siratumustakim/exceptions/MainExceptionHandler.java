@@ -1,8 +1,7 @@
 package com.ktxdevelopment.siratumustakim.exceptions;
 
-import com.ktxdevelopment.siratumustakim.util.CustomResponseModel;
-import com.ktxdevelopment.siratumustakim.util.RestError;
-import com.ktxdevelopment.siratumustakim.util.RestResponse;
+import com.ktxdevelopment.siratumustakim.util.response.CustomResponseModel;
+import com.ktxdevelopment.siratumustakim.util.response.RestResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

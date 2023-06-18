@@ -27,4 +27,3 @@ public class PostDto {
         ArrayList<String> additionalPostIds;
         Long viewed;
 };
-

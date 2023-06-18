@@ -16,7 +16,7 @@ import java.util.ArrayList;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//@Entity(name = "posts")
+@Entity(name = "post")
 @Table(name = "posts")
 public class Post {
 

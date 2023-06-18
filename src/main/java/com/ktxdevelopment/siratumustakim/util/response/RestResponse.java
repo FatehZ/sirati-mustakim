@@ -1,5 +1,7 @@
-package com.ktxdevelopment.siratumustakim.util;
+package com.ktxdevelopment.siratumustakim.util.response;
 
+import com.ktxdevelopment.siratumustakim.util.response.CustomResponseModel;
+import com.ktxdevelopment.siratumustakim.util.response.RestError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 

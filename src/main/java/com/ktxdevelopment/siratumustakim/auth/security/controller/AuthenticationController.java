@@ -4,8 +4,8 @@ import com.ktxdevelopment.siratumustakim.auth.security.model.AuthenticationReque
 import com.ktxdevelopment.siratumustakim.auth.security.model.AuthenticationResponse;
 import com.ktxdevelopment.siratumustakim.auth.security.model.RegisterRequest;
 import com.ktxdevelopment.siratumustakim.auth.security.service.AuthenticationService;
-import com.ktxdevelopment.siratumustakim.util.CustomResponseModel;
-import com.ktxdevelopment.siratumustakim.util.RestResponse;
+import com.ktxdevelopment.siratumustakim.util.response.CustomResponseModel;
+import com.ktxdevelopment.siratumustakim.util.response.RestResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

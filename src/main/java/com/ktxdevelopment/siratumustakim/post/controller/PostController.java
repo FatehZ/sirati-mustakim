@@ -1,11 +1,12 @@
 package com.ktxdevelopment.siratumustakim.post.controller;
 
 
+import com.ktxdevelopment.siratumustakim.post.model.dto.PostDto;
 import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
 import com.ktxdevelopment.siratumustakim.post.model.request.PostRequestModel;
 import com.ktxdevelopment.siratumustakim.post.service.PostService;
-import com.ktxdevelopment.siratumustakim.util.CustomResponseModel;
-import com.ktxdevelopment.siratumustakim.util.RestResponse;
+import com.ktxdevelopment.siratumustakim.util.response.CustomResponseModel;
+import com.ktxdevelopment.siratumustakim.util.response.RestResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,9 +34,8 @@ public class PostController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<CustomResponseModel<Post>> createNewPost(
-            @RequestBody PostRequestModel post
-    ) {
+    public ResponseEntity<CustomResponseModel<Post>> createNewPost(@RequestBody PostRequestModel post) {
+//        PostDto dto =
         return RestResponse.ok(postService.insertNewProduct(post));
     }
 }
