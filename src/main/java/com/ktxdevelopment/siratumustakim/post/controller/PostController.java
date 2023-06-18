@@ -5,6 +5,7 @@ import com.ktxdevelopment.siratumustakim.post.model.dto.PostDto;
 import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
 import com.ktxdevelopment.siratumustakim.post.model.request.PostRequestModel;
 import com.ktxdevelopment.siratumustakim.post.service.PostService;
+import com.ktxdevelopment.siratumustakim.util.mapper.PostMapper;
 import com.ktxdevelopment.siratumustakim.util.response.CustomResponseModel;
 import com.ktxdevelopment.siratumustakim.util.response.RestResponse;
 import lombok.RequiredArgsConstructor;
@@ -34,8 +35,8 @@ public class PostController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<CustomResponseModel<Post>> createNewPost(@RequestBody PostRequestModel post) {
-//        PostDto dto =
-        return RestResponse.ok(postService.insertNewProduct(post));
+    public ResponseEntity<CustomResponseModel<PostDto>> createNewPost(@RequestBody PostRequestModel post) {
+        PostDto dto = PostMapper.INSTANCE.toDto(post);
+        return RestResponse.ok(postService.insertNewProduct(dto));
     }
 }

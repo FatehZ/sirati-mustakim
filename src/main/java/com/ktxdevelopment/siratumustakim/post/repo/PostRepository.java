@@ -16,9 +16,10 @@ public interface PostRepository extends JpaRepository<Post, Integer>, PagingAndS
     Optional<List<Post>> findByViewed(Long viewed);
     Optional<Post> findByPostId(String postId);
 
+    @Modifying
     @Query("INSERT INTO posts (id, post_id, title, subtitle, content, dateAdded, dateUpdated, viewed) " +
             "VALUES (:#{#post.id}, :#{#post.postId}, :#{#post.title}, :#{#post.subtitle}, :#{#post.content}, " +
             ":#{#post.dateAdded}, :#{#post.dateUpdated}, :#{#post.viewed})")
-    void insertPost(@Param("post") Post post);
+    Post insertPost(@Param("post") Post post);
 
 }

@@ -1,5 +1,6 @@
 package com.ktxdevelopment.siratumustakim.post.service;
 
+import com.ktxdevelopment.siratumustakim.post.model.dto.PostDto;
 import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
 import com.ktxdevelopment.siratumustakim.post.model.request.PostRequestModel;
 import org.springframework.stereotype.Service;
@@ -15,5 +16,5 @@ public interface PostService {
 
     List<Post> getTrendingPosts();
 
-    Post insertNewProduct(PostRequestModel post);
+    PostDto insertNewProduct(PostDto post);
 }

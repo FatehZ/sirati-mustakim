@@ -21,14 +21,22 @@ public interface PostMapper {
     @Mapping(target = "viewed", source = "dto.viewed")
     Post toEntity(PostDto dto);
 
+    @Mapping(target = "postId", source = "dto.postId")
+    @Mapping(target = "title", source = "dto.title")
+    @Mapping(target = "subtitle", source = "dto.subtitle")
+    @Mapping(target = "content", source = "dto.content")
+    @Mapping(target = "dateAdded", source = "dto.dateAdded")
+    @Mapping(target = "dateUpdated", source = "dto.dateUpdated")
+    @Mapping(target = "viewed", source = "dto.viewed")
+    PostDto toDto(PostRequestModel requestModel);
+
     @Mapping(target = "postId", source = "entity.postId")
     @Mapping(target = "title", source = "entity.title")
     @Mapping(target = "subtitle", source = "entity.subtitle")
     @Mapping(target = "content", source = "entity.content")
-    @Mapping(target = "dateAdded", source = "entity.dateAdded")
-    @Mapping(target = "dateUpdated", source = "entity.dateUpdated")
+    @Mapping(target = "date", source = "entity.date")
     @Mapping(target = "viewed", source = "entity.viewed")
-    PostDto toDTO(Post entity);
+    PostDto toDto(Post entity);
 
     @Mapping(target = "dtoField", source = "entityField")
     PostDto toDTO(PostRequestModel entity);

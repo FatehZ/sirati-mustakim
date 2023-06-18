@@ -1,17 +1,17 @@
 package com.ktxdevelopment.siratumustakim.post.service;
 
+import com.ktxdevelopment.siratumustakim.post.model.dto.PostDto;
 import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
 import com.ktxdevelopment.siratumustakim.post.model.request.PostRequestModel;
 import com.ktxdevelopment.siratumustakim.post.repo.PostRepository;
+import com.ktxdevelopment.siratumustakim.util.mapper.PostMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
 @RequiredArgsConstructor
-@Service
 public class PostServiceImpl implements PostService{
 
     PostRepository postRepository;
@@ -27,7 +27,7 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public Post insertNewProduct(PostRequestModel post) {
-        return postRepository.insertPost(post);
+    public PostDto insertNewProduct(PostDto post) {
+        return PostMapper.INSTANCE.toDto(postRepository.insertPost(PostMapper.INSTANCE.toEntity(post)));
     }
 }
