@@ -1,5 +1,6 @@
 package com.ktxdevelopment.siratumustakim.post.model.dto;
 
+import com.ktxdevelopment.siratumustakim.category.model.dto.CategoryDto;
 import com.ktxdevelopment.siratumustakim.category.model.entity.Category;
 import com.ktxdevelopment.siratumustakim.tag.model.dto.TagDto;
 import com.ktxdevelopment.siratumustakim.auth.user.model.User;
@@ -18,7 +19,7 @@ public class PostDto {
         String subtitle;
         ArrayList<String> tagIds;
         ArrayList<TagDto> tags;
-        Category category;
+        CategoryDto category;
         HashMap<String, String> content;
         ArrayList<User> authors; //todo
         String date;
