@@ -23,7 +23,7 @@ public class PostController {
     @GetMapping("/getAll")
     public ResponseEntity<CustomResponseModel<List<Post>>> getAllPostsPaginated(
             @RequestParam(name = "p", defaultValue = "0") int page,
-            @RequestParam(name = "l", defaultValue = "20") int limit) {
+            @RequestParam(name = "l", defaultValue = "30") int limit) {
 
         return RestResponse.ok(postService.getPostsPaginated(page, limit));
     }

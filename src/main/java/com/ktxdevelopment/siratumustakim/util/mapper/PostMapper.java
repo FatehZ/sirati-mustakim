@@ -12,10 +12,22 @@ public interface PostMapper {
 
     PostMapper INSTANCE = Mappers.getMapper(PostMapper.class);
 
-    @Mapping(target = "entityField", source = "dtoField")
+    @Mapping(target = "postId", source = "dto.postId")
+    @Mapping(target = "title", source = "dto.title")
+    @Mapping(target = "subtitle", source = "dto.subtitle")
+    @Mapping(target = "content", source = "dto.content")
+    @Mapping(target = "dateAdded", source = "dto.dateAdded")
+    @Mapping(target = "dateUpdated", source = "dto.dateUpdated")
+    @Mapping(target = "viewed", source = "dto.viewed")
     Post toEntity(PostDto dto);
 
-    @Mapping(target = "dtoField", source = "entityField")
+    @Mapping(target = "postId", source = "entity.postId")
+    @Mapping(target = "title", source = "entity.title")
+    @Mapping(target = "subtitle", source = "entity.subtitle")
+    @Mapping(target = "content", source = "entity.content")
+    @Mapping(target = "dateAdded", source = "entity.dateAdded")
+    @Mapping(target = "dateUpdated", source = "entity.dateUpdated")
+    @Mapping(target = "viewed", source = "entity.viewed")
     PostDto toDTO(Post entity);
 
     @Mapping(target = "dtoField", source = "entityField")

@@ -21,7 +21,8 @@ public class PostDto {
         ArrayList<TagDto> tags;
         CategoryDto category;
         HashMap<String, String> content;
-        ArrayList<User> authors; //todo
+        ArrayList<String> authorIds;
+        ArrayList<User> authors;
         String date;
         ArrayList<String> references;
         ArrayList<String> additionalPostIds;
