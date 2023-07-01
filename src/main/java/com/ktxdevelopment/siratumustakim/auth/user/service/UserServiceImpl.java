@@ -1,6 +1,6 @@
 package com.ktxdevelopment.siratumustakim.auth.user.service;
 
-import com.ktxdevelopment.siratumustakim.auth.user.model.User;
+import com.ktxdevelopment.siratumustakim.auth.user.model.entity.User;
 import com.ktxdevelopment.siratumustakim.auth.user.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
 

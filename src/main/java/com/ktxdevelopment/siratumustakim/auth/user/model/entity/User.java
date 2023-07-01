@@ -1,6 +1,7 @@
-package com.ktxdevelopment.siratumustakim.auth.user.model;
+package com.ktxdevelopment.siratumustakim.auth.user.model.entity;
 
 import com.ktxdevelopment.siratumustakim.auth.token.model.Token;
+import com.ktxdevelopment.siratumustakim.auth.user.model.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -13,6 +14,7 @@ import java.util.Objects;
 
 
 @Setter
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -85,7 +87,7 @@ public class User implements UserDetails {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         User user = (User) o;
-        return getId() != null && Objects.equals(getId(), user.getId());
+        return id != null && Objects.equals(id, user.id);
     }
 
     @Override

@@ -1,12 +1,11 @@
 package com.ktxdevelopment.siratumustakim.tag.service;
 
-import com.ktxdevelopment.siratumustakim.exceptions.TagNotFoundException;
-import com.ktxdevelopment.siratumustakim.tag.model.entity.Tag;
+import com.ktxdevelopment.siratumustakim.tag.model.response.TagResponse;
 
 import java.util.List;
 
 public interface TagService{
-    List<Tag> getAllTags();
+    List<TagResponse> getAllTags();
 
-    Tag getTagByTagId(String tagId) throws TagNotFoundException;
+    TagResponse getTagByTagId(String tagId);
 }

@@ -7,7 +7,7 @@ import com.ktxdevelopment.siratumustakim.auth.security.model.RegisterRequest;
 import com.ktxdevelopment.siratumustakim.auth.token.model.Token;
 import com.ktxdevelopment.siratumustakim.auth.token.model.TokenType;
 import com.ktxdevelopment.siratumustakim.auth.token.repo.TokenRepository;
-import com.ktxdevelopment.siratumustakim.auth.user.model.User;
+import com.ktxdevelopment.siratumustakim.auth.user.model.entity.User;
 import com.ktxdevelopment.siratumustakim.auth.user.repo.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

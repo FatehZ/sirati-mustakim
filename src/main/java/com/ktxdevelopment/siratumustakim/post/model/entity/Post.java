@@ -1,14 +1,15 @@
 package com.ktxdevelopment.siratumustakim.post.model.entity;
 
 import com.ktxdevelopment.siratumustakim.category.model.entity.Category;
+import com.ktxdevelopment.siratumustakim.post.model.dto.PostDto;
+import com.ktxdevelopment.siratumustakim.post.model.dto.PostLitDto;
 import com.ktxdevelopment.siratumustakim.tag.model.entity.Tag;
-import com.ktxdevelopment.siratumustakim.auth.user.model.User;
+import com.ktxdevelopment.siratumustakim.auth.user.model.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.util.ArrayList;
 
@@ -21,13 +22,7 @@ import java.util.ArrayList;
 public class Post {
 
         @Id
-        @GeneratedValue
-        @Column(name = "id")
-        Integer id;
-
         @Column(name = "post_id")
-        @GeneratedValue(generator = "uuid2")
-        @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
         String postId;
 
         @Column(name = "title")
@@ -37,35 +32,37 @@ public class Post {
         String subtitle;
 
         @ManyToMany
-        @JoinTable(
-                name = "post_tag",
-                joinColumns = @JoinColumn(name = "post_id"),
-                inverseJoinColumns = @JoinColumn(name = "tag_id")
-        )
         ArrayList<Tag> tags;
 
         @ManyToOne
+        @JoinColumn(name = "category_id")
         Category category;
 
-        @Column(name = "content", nullable = false)
+        @Column(name = "content", nullable = false, columnDefinition = "TEXT")
         String content;
 
         @ManyToMany
-        ArrayList<User> authors; //todo
+        @JoinTable(
+                name = "user_post",
+                joinColumns = @JoinColumn(name = "post_id"),
+                inverseJoinColumns = @JoinColumn(name = "user_id")
+        )
+        ArrayList<User> authors;
 
-        @Column(name = "dateAdded")
+        @Column(name = "date_added")
         String dateAdded;
-
-
-        @Column(name = "dateUpdated")
-        String dateUpdated;
 
         @Column(name = "references")
         ArrayList<String> references;
 
-        @Column(name = "additional_posts")
-        ArrayList<String> additionalPostIds;
-
         @Column(name = "viewed")
         Long viewed;
+
+        public PostDto toDto() {
+                return new PostDto(postId, title, subtitle, tags, category);
+        }
+
+        public PostLitDto toLitDto() {
+                return new PostLitDto(postId, title, subtitle);
+        }
 }

@@ -1,19 +1,17 @@
 package com.ktxdevelopment.siratumustakim.category.model.dto;
 
-import com.ktxdevelopment.siratumustakim.auth.user.model.User;
-import com.ktxdevelopment.siratumustakim.category.model.entity.Category;
-import com.ktxdevelopment.siratumustakim.tag.model.dto.TagDto;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+import lombok.NoArgsConstructor;
 
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class CategoryDto {
-        private Integer id;
         private String categoryId;
         private String title;
+        private String description;
 };
 

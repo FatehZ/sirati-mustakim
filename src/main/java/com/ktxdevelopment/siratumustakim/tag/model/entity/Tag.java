@@ -2,12 +2,12 @@ package com.ktxdevelopment.siratumustakim.tag.model.entity;
 
 import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
 import com.ktxdevelopment.siratumustakim.tag.model.dto.TagDto;
+import com.ktxdevelopment.siratumustakim.tag.model.dto.TagFullDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.context.annotation.Lazy;
 
 import java.util.ArrayList;
@@ -20,29 +20,31 @@ import java.util.ArrayList;
 @Builder
 public class Tag {
 
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "id")
-    private String tagId;
-
-
     @Id
-    @GeneratedValue
-    private String id;
+    @Column(name = "tag_id")
+    private String tagId;
 
     @Column(name = "title")
     private String title;
 
     @Lazy
     @ManyToMany(mappedBy = "tags")
+    @JoinTable(
+            name = "tag_post",
+            joinColumns = @JoinColumn(name = "tag_id"),
+            inverseJoinColumns = @JoinColumn(name = "post_id")
+    )
     private ArrayList<Post> posts;
 
+
+    @Column(name = "description")
     private String description;
-    TagDto toDtoWithPosts() {
-        return new TagDto(id, title, description, posts);
+
+    TagFullDto toDtoFull() {
+        return new TagFullDto(tagId, title, description, posts);
     }
 
-    TagDto toDto() {
-        return new TagDto(id, title, description);
+    public TagDto toDto() {
+        return new TagDto(tagId, title, description);
     }
 }

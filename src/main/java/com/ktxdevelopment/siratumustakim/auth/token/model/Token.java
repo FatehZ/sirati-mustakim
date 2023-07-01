@@ -1,7 +1,7 @@
 package com.ktxdevelopment.siratumustakim.auth.token.model;
 
 
-import com.ktxdevelopment.siratumustakim.auth.user.model.User;
+import com.ktxdevelopment.siratumustakim.auth.user.model.entity.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
