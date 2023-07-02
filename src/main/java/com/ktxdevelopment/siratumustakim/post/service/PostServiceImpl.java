@@ -32,11 +32,6 @@ public class PostServiceImpl implements PostService{
         return null;
     }
 
-    @Override
-    public PostLitResponse insertNewProduct(PostRequestModel post) {
-        return null;
-    }
-
     @SneakyThrows
     @Override
     public PostResponse getFullPostById(String postId) {
@@ -44,9 +39,11 @@ public class PostServiceImpl implements PostService{
         return dto.toResponse();
     }
 
+    @SneakyThrows
     @Override
     public PostLitResponse getLitPostById(String postId) {
-        return null;
+        var dto = postRepository.findPostLitById(postId).orElseThrow(PostNotFoundException::new);
+        return dto.toResponse();
     }
 
 

@@ -3,6 +3,7 @@ package com.ktxdevelopment.siratumustakim.post.controller;
 
 import com.ktxdevelopment.siratumustakim.post.model.request.PostRequestModel;
 import com.ktxdevelopment.siratumustakim.post.model.response.PostLitResponse;
+import com.ktxdevelopment.siratumustakim.post.model.response.PostResponse;
 import com.ktxdevelopment.siratumustakim.post.service.PostService;
 import com.ktxdevelopment.siratumustakim.util.response.CustomResponseModel;
 import com.ktxdevelopment.siratumustakim.util.response.RestResponse;
@@ -32,8 +33,15 @@ public class PostController {
         return RestResponse.ok(postService.getTrendingPosts());
     }
 
-    @PostMapping("/")
-    public ResponseEntity<CustomResponseModel<PostLitResponse>> createNewPost(@RequestBody PostRequestModel post) {
-        return RestResponse.ok(postService.insertNewProduct(post));
+
+    @GetMapping("/{postId}")
+    public ResponseEntity<CustomResponseModel<PostResponse>> getPostById(@PathVariable String postId) {
+        return RestResponse.ok(postService.getFullPostById(postId));
+    }
+
+
+    @GetMapping("/{postId}/lit")
+    public ResponseEntity<CustomResponseModel<PostLitResponse>> getLitPostById(@PathVariable String postId) {
+        return RestResponse.ok(postService.getLitPostById(postId));
     }
 }

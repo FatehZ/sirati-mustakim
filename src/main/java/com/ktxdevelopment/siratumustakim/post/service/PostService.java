@@ -14,11 +14,7 @@ public interface PostService {
 
     List<PostLitResponse> getPostsPaginated(int page, int limit);
 
-
     List<PostLitResponse> getTrendingPosts();
-
-    PostLitResponse insertNewProduct(PostRequestModel post);
-
 
     PostResponse getFullPostById(String postId);
 

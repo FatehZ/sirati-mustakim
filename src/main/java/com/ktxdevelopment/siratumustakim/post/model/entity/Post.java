@@ -31,6 +31,11 @@ public class Post {
     String subtitle;
 
     @ManyToMany
+    @JoinTable(
+            name = "tag_post",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
     List<Tag> tags;
 
     @ManyToOne
@@ -48,7 +53,7 @@ public class Post {
     @Column(name = "date_created")
     private Date dateCreated;
 
-    @Column(name = "references", columnDefinition = "TEXT")
+    @Column(name = "reference", columnDefinition = "TEXT")
     String references;
 
     @Column(name = "viewed")

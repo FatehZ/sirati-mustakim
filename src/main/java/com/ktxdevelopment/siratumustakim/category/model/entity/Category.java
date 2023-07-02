@@ -1,8 +1,6 @@
 package com.ktxdevelopment.siratumustakim.category.model.entity;
 
 
-import com.ktxdevelopment.siratumustakim.category.model.dto.CategoryDto;
-import com.ktxdevelopment.siratumustakim.category.model.dto.CategoryFullDto;
 import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,7 +10,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity(name = "category")
 @Table(name = "categories")
@@ -35,19 +32,5 @@ public class Category {
 
     @Lazy
     @OneToMany(mappedBy = "category")
-    @JoinTable(
-            name = "category_post",
-            joinColumns = @JoinColumn(name = "category_id"),
-            inverseJoinColumns = @JoinColumn(name = "post_id")
-    )
     private List<Post> posts;
-
-
-    CategoryFullDto toDtoFull() {
-        return new CategoryFullDto(categoryId, title, description, posts.stream().map(Post::toLitDto).collect(Collectors.toList()));
-    }
-
-    public CategoryDto toDto() {
-        return new CategoryDto(categoryId, title, description);
-    }
 }

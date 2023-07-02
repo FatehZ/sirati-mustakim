@@ -30,11 +30,6 @@ public class Tag {
 
     @Lazy
     @ManyToMany(mappedBy = "tags")
-    @JoinTable(
-            name = "tag_post",
-            joinColumns = @JoinColumn(name = "tag_id"),
-            inverseJoinColumns = @JoinColumn(name = "post_id")
-    )
     private List<Post> posts;
 
 

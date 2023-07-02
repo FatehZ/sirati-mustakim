@@ -2,6 +2,7 @@ package com.ktxdevelopment.siratumustakim.post.repo;
 
 import com.ktxdevelopment.siratumustakim.post.model.dto.PostDto;
 import com.ktxdevelopment.siratumustakim.post.model.dto.PostLitDto;
+import com.ktxdevelopment.siratumustakim.post.model.request.PostRequestModel;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
