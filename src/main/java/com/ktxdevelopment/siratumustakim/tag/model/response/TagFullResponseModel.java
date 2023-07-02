@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -15,6 +15,6 @@ import java.util.ArrayList;
 public class TagFullResponseModel {
     private String tagId;
     private String title;
-    private ArrayList<Post> posts;
+    private List<Post> posts;
     private String description;
 }

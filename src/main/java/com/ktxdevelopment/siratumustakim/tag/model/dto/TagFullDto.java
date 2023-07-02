@@ -3,7 +3,7 @@ package com.ktxdevelopment.siratumustakim.tag.model.dto;
 import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
 import lombok.*;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -16,5 +16,5 @@ public class TagFullDto {
     private String id;
     private String description;
     private String title;
-    private ArrayList<Post> posts;
+    private List<Post> posts;
 }

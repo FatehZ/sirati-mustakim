@@ -10,8 +10,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 
-import java.util.ArrayList;
+import java.util.List;
 
+@Entity(name ="tag")
 @Table(name = "tags")
 //@Entity(name = "tag")
 @Data
@@ -34,7 +35,7 @@ public class Tag {
             joinColumns = @JoinColumn(name = "tag_id"),
             inverseJoinColumns = @JoinColumn(name = "post_id")
     )
-    private ArrayList<Post> posts;
+    private List<Post> posts;
 
 
     @Column(name = "description")

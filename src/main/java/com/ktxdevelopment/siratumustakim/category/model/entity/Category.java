@@ -11,7 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity(name = "category")
@@ -40,14 +40,14 @@ public class Category {
             joinColumns = @JoinColumn(name = "category_id"),
             inverseJoinColumns = @JoinColumn(name = "post_id")
     )
-    private ArrayList<Post> posts;
+    private List<Post> posts;
 
 
     CategoryFullDto toDtoFull() {
-        return new CategoryFullDto(categoryId, title, description, posts.stream().map(Post::toDto).collect(Collectors.toList()));
+        return new CategoryFullDto(categoryId, title, description, posts.stream().map(Post::toLitDto).collect(Collectors.toList()));
     }
 
-    CategoryDto toDto() {
+    public CategoryDto toDto() {
         return new CategoryDto(categoryId, title, description);
     }
 }

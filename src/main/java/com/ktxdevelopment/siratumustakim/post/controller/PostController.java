@@ -1,11 +1,9 @@
 package com.ktxdevelopment.siratumustakim.post.controller;
 
 
-import com.ktxdevelopment.siratumustakim.post.model.dto.PostDto;
-import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
 import com.ktxdevelopment.siratumustakim.post.model.request.PostRequestModel;
+import com.ktxdevelopment.siratumustakim.post.model.response.PostLitResponse;
 import com.ktxdevelopment.siratumustakim.post.service.PostService;
-import com.ktxdevelopment.siratumustakim.util.mapper.PostMapper;
 import com.ktxdevelopment.siratumustakim.util.response.CustomResponseModel;
 import com.ktxdevelopment.siratumustakim.util.response.RestResponse;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +20,7 @@ public class PostController {
     private PostService postService;
 
     @GetMapping("/getAll")
-    public ResponseEntity<CustomResponseModel<List<Post>>> getAllPostsPaginated(
+    public ResponseEntity<CustomResponseModel<List<PostLitResponse>>> getAllPostsPaginated(
             @RequestParam(name = "p", defaultValue = "0") int page,
             @RequestParam(name = "l", defaultValue = "30") int limit) {
 
@@ -30,13 +28,12 @@ public class PostController {
     }
 
     @GetMapping("/trending")
-    public ResponseEntity<CustomResponseModel<List<Post>>> getTrendingPosts() {
+    public ResponseEntity<CustomResponseModel<List<PostLitResponse>>> getTrendingPosts() {
         return RestResponse.ok(postService.getTrendingPosts());
     }
 
     @PostMapping("/")
-    public ResponseEntity<CustomResponseModel<PostDto>> createNewPost(@RequestBody PostRequestModel post) {
-        PostDto dto = PostMapper.INSTANCE.toDto(post);
-        return RestResponse.ok(postService.insertNewProduct(dto));
+    public ResponseEntity<CustomResponseModel<PostLitResponse>> createNewPost(@RequestBody PostRequestModel post) {
+        return RestResponse.ok(postService.insertNewProduct(post));
     }
 }

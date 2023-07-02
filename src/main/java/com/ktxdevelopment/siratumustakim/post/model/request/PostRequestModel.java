@@ -2,18 +2,18 @@ package com.ktxdevelopment.siratumustakim.post.model.request;
 
 import com.ktxdevelopment.siratumustakim.auth.user.model.entity.User;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class PostRequestModel {
     String postId;
     String title;
     String subtitle;
-    ArrayList<String> tagIds;
+    List<String> tagIds;
     String categoryId;
     HashMap<String, String> content;
-    ArrayList<User> authors;
-    ArrayList<String> references;
-    ArrayList<String> additionalPostIds;
+    List<User> authors;
+    List<String> references;
+    List<String> additionalPostIds;
     Long viewed;
 };
