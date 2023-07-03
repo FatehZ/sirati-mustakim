@@ -7,21 +7,28 @@ import com.ktxdevelopment.siratumustakim.auth.security.model.RegisterRequest;
 import com.ktxdevelopment.siratumustakim.auth.token.model.Token;
 import com.ktxdevelopment.siratumustakim.auth.token.model.TokenType;
 import com.ktxdevelopment.siratumustakim.auth.token.repo.TokenRepository;
+import com.ktxdevelopment.siratumustakim.auth.user.model.Role;
 import com.ktxdevelopment.siratumustakim.auth.user.model.entity.User;
 import com.ktxdevelopment.siratumustakim.auth.user.repo.UserRepository;
+import com.ktxdevelopment.siratumustakim.exceptions.AuthRequestNotCorrectException;
+import com.ktxdevelopment.siratumustakim.exceptions.UserExistsException;
+import com.ktxdevelopment.siratumustakim.exceptions.UserNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AuthenticationService {
     private final UserRepository repository;
     private final TokenRepository tokenRepository;
@@ -29,21 +36,28 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
+    @SneakyThrows
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
                 .username(request.getUsername())
+                .userId(UUID.randomUUID().toString())
                 .email(request.getEmail())
                 .encryptedPassword(passwordEncoder.encode(request.getPassword()))
-                .role(request.getRole())
+                .role(Role.USER)
                 .build();
-        var savedUser = repository.save(user);
-        var jwtToken = jwtService.generateToken(user);
-        var refreshToken = jwtService.generateRefreshToken(user);
-        saveUserToken(savedUser, jwtToken);
 
-        return new AuthenticationResponse(jwtToken, refreshToken);
+        try {
+            var savedUser = repository.save(user);
+            var jwtToken = jwtService.generateToken(user);
+            var refreshToken = jwtService.generateRefreshToken(user);
+            saveUserToken(savedUser, jwtToken);
+            return new AuthenticationResponse(jwtToken, refreshToken);
+        }catch (Exception e) {
+            throw new UserExistsException();
+        }
     }
 
+    @SneakyThrows
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -51,8 +65,7 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-        var user = repository.findByEmail(request.getEmail())
-                .orElseThrow();
+        var user = repository.findByEmail(request.getEmail()).orElseThrow(UserNotFoundException::new);
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         revokeAllUserTokens(user);
@@ -75,7 +88,7 @@ public class AuthenticationService {
     }
 
     private void revokeAllUserTokens(User user) {
-        var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getId());
+        var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getUserId());
         if (validUserTokens.isEmpty())
             return;
         validUserTokens.forEach(token -> {
@@ -85,19 +98,22 @@ public class AuthenticationService {
         tokenRepository.saveAll(validUserTokens);
     }
 
-    public AuthenticationResponse refreshToken(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    @SneakyThrows
+    public AuthenticationResponse refreshToken(HttpServletRequest request, HttpServletResponse response) {
         final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         final String refreshToken;
         final String userEmail;
         if (authHeader == null ||!authHeader.startsWith("Bearer ")) {
-            return null;
+            throw new AuthRequestNotCorrectException();
         }
 
         refreshToken = authHeader.substring(7);
         userEmail = jwtService.extractUsername(refreshToken);
         if (userEmail != null) {
-            var user = this.repository.findByEmail(userEmail).orElseThrow();
+            log.error("User " + userEmail);
+            var user = this.repository.findByEmail(userEmail).orElseThrow(UserNotFoundException::new);
 
+            log.info("User  NOT FOUND" + user);
             if (jwtService.isTokenValid(refreshToken, user)) {
 
                 var accessToken = jwtService.generateToken(user);
@@ -111,6 +127,6 @@ public class AuthenticationService {
                         .build();
             }
         }
-        return null;
+        throw new UserNotFoundException();
     }
 }

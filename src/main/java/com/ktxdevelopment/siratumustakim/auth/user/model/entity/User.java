@@ -24,16 +24,16 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     @Getter
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, unique = true)
     private Integer id;
 
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id", nullable = false, unique = true)
     private String userId;
 
     @Column(name = "username", nullable = false)
     private String username;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Column(name = "password", nullable = false)
@@ -80,4 +80,23 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public User(String userId, String username, String email, String encryptedPassword, Role role) {
+        this.userId = userId;
+        this.username = username;
+        this.email = email;
+        this.encryptedPassword = encryptedPassword;
+        this.role = role;
+    }
+
+    public User(String userId, String username, String email, String encryptedPassword, Role role, List<Token> tokens) {
+        this.userId = userId;
+        this.username = username;
+        this.email = email;
+        this.encryptedPassword = encryptedPassword;
+        this.role = role;
+        this.tokens = tokens;
+    }
+
+
 }

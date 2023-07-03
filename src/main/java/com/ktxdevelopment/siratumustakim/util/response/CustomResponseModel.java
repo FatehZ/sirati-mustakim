@@ -1,8 +1,21 @@
 package com.ktxdevelopment.siratumustakim.util.response;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
-public class CustomResponseModel<T> {  //todo can add timestamp to response
+import java.io.IOException;
+
+
+
+@Getter
+@Setter
+public class  CustomResponseModel<T> {
     private final HttpStatus status;
     private final T data;
     private final RestError error;
@@ -41,5 +54,38 @@ public class CustomResponseModel<T> {  //todo can add timestamp to response
         this.error = error;
         this.data = null;
         this.status = HttpStatus.BAD_REQUEST;
+    }
+
+    public CustomResponseModel(HttpStatus httpStatus, T t, RestError restError) {
+        this.status = httpStatus;
+        this.data = t;
+        this.error = restError;
+    }
+
+    static class CustomResponseModelSerializer<T> extends JsonSerializer<CustomResponseModel<T>> {
+        @Override
+        public void serialize(CustomResponseModel<T> value, JsonGenerator gen, SerializerProvider serializers)
+                throws IOException {
+            gen.writeStartObject();
+            gen.writeStringField("status", value.getStatus().toString());
+            gen.writeObjectField("data", value.getData());
+            gen.writeObjectField("error", value.getError());
+            gen.writeEndObject();
+        }
+    }
+
+    static class CustomResponseModelDeserializer<T> extends JsonDeserializer<CustomResponseModel<T>> {
+        @Override
+        public CustomResponseModel<T> deserialize(JsonParser p, DeserializationContext ctxt)
+                throws IOException, JsonProcessingException {
+            ObjectMapper mapper = (ObjectMapper) p.getCodec();
+            JsonNode root = mapper.readTree(p);
+
+            HttpStatus status = HttpStatus.valueOf(root.get("status").asText());
+            T data = mapper.readValue(root.get("data").traverse(), new TypeReference<T>() {});
+            RestError error = mapper.readValue(root.get("error").traverse(), RestError.class);
+
+            return new CustomResponseModel<>(status, data, error);
+        }
     }
 }

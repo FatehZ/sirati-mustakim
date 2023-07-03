@@ -9,6 +9,8 @@ import com.ktxdevelopment.siratumustakim.util.response.RestResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,14 +21,15 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1/auth")
+@Slf4j
 @RequiredArgsConstructor
 public class AuthenticationController {
 
   private final AuthenticationService service;
 
-  @PostMapping("/register")
+  @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<CustomResponseModel<AuthenticationResponse>> register(@RequestBody RegisterRequest request) {
-    return RestResponse.ok(service.register(request));
+      return RestResponse.ok(service.register(request));
   }
 
 
