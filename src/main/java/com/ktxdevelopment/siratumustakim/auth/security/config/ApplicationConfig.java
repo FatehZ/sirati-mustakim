@@ -1,5 +1,6 @@
 package com.ktxdevelopment.siratumustakim.auth.security.config;
 
+import com.ktxdevelopment.siratumustakim.auth.security.service.LogoutService;
 import com.ktxdevelopment.siratumustakim.auth.user.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -22,8 +23,7 @@ public class ApplicationConfig {
 
   @Bean
   public UserDetailsService userDetailsService() {
-    return username -> repository.findByEmail(username)
-        .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    return username -> repository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
   }
 
   @Bean

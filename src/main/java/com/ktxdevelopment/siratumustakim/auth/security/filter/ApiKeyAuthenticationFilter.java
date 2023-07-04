@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratumustakim.auth.security.config.authentication;
+package com.ktxdevelopment.siratumustakim.auth.security.filter;
 
 import com.ktxdevelopment.siratumustakim.exceptions.ApiKeyInvalidException;
 import jakarta.servlet.FilterChain;
@@ -25,15 +25,11 @@ public class ApiKeyAuthenticationFilter extends OncePerRequestFilter {
     @SneakyThrows
     @Override
     protected void doFilterInternal(HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull FilterChain filterChain) {
-
         String providedApiKey = request.getHeader(API_KEY_HEADER);
 
-        if (providedApiKey != null && providedApiKey.equals(apiKey)) {
-            log.error("Filter 3");
+        if (providedApiKey != null && providedApiKey.startsWith("SRT ") && providedApiKey.substring(4).equals(apiKey)) {
             filterChain.doFilter(request, response);
         }
-        else {
-            throw new ApiKeyInvalidException();
-        }
+        else throw new ApiKeyInvalidException();
     }
 }

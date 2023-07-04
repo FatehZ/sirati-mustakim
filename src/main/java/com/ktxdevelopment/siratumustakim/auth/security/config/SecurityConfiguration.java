@@ -1,9 +1,9 @@
 package com.ktxdevelopment.siratumustakim.auth.security.config;
 
 
-import com.ktxdevelopment.siratumustakim.auth.security.config.authentication.ApiKeyAuthenticationFilter;
+import com.ktxdevelopment.siratumustakim.auth.security.filter.ApiKeyAuthenticationFilter;
+import com.ktxdevelopment.siratumustakim.auth.security.filter.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;

@@ -1,7 +1,5 @@
 package com.ktxdevelopment.siratumustakim.post.service;
 
-import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
-import com.ktxdevelopment.siratumustakim.post.model.request.PostRequestModel;
 import com.ktxdevelopment.siratumustakim.post.model.response.PostLitResponse;
 import com.ktxdevelopment.siratumustakim.post.model.response.PostResponse;
 import org.springframework.stereotype.Service;

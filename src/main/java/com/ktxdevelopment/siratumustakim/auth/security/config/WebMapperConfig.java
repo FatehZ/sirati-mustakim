@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratumustakim.auth.security.controller;
+package com.ktxdevelopment.siratumustakim.auth.security.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ktxdevelopment.siratumustakim.util.response.CustomResponseModel;
@@ -19,11 +19,11 @@ import java.io.IOException;
 import java.util.List;
 
 @Configuration
-public class WebConfig implements WebMvcConfigurer {
+public class WebMapperConfig implements WebMvcConfigurer {
 
     private final ObjectMapper objectMapper;
 
-    public WebConfig(ObjectMapper objectMapper) {
+    public WebMapperConfig(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 

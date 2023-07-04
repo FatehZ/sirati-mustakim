@@ -1,13 +1,13 @@
 package com.ktxdevelopment.siratumustakim.post.controller;
 
 
-import com.ktxdevelopment.siratumustakim.post.model.request.PostRequestModel;
 import com.ktxdevelopment.siratumustakim.post.model.response.PostLitResponse;
 import com.ktxdevelopment.siratumustakim.post.model.response.PostResponse;
 import com.ktxdevelopment.siratumustakim.post.service.PostService;
 import com.ktxdevelopment.siratumustakim.util.response.CustomResponseModel;
 import com.ktxdevelopment.siratumustakim.util.response.RestResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PostController {
 
+    @Autowired
     private PostService postService;
 
     @GetMapping("/getAll")

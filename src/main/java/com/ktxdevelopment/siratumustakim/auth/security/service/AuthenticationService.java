@@ -1,6 +1,5 @@
 package com.ktxdevelopment.siratumustakim.auth.security.service;
 
-import com.ktxdevelopment.siratumustakim.auth.security.config.JwtService;
 import com.ktxdevelopment.siratumustakim.auth.security.model.AuthenticationRequest;
 import com.ktxdevelopment.siratumustakim.auth.security.model.AuthenticationResponse;
 import com.ktxdevelopment.siratumustakim.auth.security.model.RegisterRequest;
@@ -116,10 +115,7 @@ public class AuthenticationService {
                 revokeAllUserTokens(user);
                 saveUserToken(user, accessToken);
 
-                return AuthenticationResponse.builder()
-                        .accessToken(accessToken)
-                        .refreshToken(refreshToken)
-                        .build();
+                return AuthenticationResponse.builder().accessToken(accessToken).refreshToken(refreshToken).build();
             }
         }
         throw new UserNotFoundException();

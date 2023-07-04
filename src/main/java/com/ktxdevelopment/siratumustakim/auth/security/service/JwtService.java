@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratumustakim.auth.security.config;
+package com.ktxdevelopment.siratumustakim.auth.security.service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

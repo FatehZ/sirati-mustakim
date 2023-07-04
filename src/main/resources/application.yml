@@ -17,11 +17,12 @@ spring:
 server:
   port: 8082
 
+
 application:
   security:
     api-key: 38dfgjlruldmfhtlgr49340erijgnewr4wu9
     jwt:
       secret-key: 368b38111be560242ac1202439b3aa8190811ebe560242ac120002
-      expiration: 86400000 # a day
+      expiration: 172800000 # 2 days
       refresh-token:
-        expiration: 604800000 # 7 days
+        expiration: 1209600000 # 7 days

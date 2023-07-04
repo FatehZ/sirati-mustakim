@@ -1,7 +1,6 @@
 package com.ktxdevelopment.siratumustakim.auth.security.service;
 
 
-import com.ktxdevelopment.siratumustakim.auth.security.config.JwtService;
 import com.ktxdevelopment.siratumustakim.auth.security.model.AuthenticationRequest;
 import com.ktxdevelopment.siratumustakim.auth.security.model.AuthenticationResponse;
 import com.ktxdevelopment.siratumustakim.auth.security.model.RegisterRequest;
@@ -15,15 +14,11 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.stubbing.OngoingStubbing;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

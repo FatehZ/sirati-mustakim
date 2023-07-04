@@ -1,10 +1,10 @@
-package com.ktxdevelopment.siratumustakim.tag.service;
+package com.ktxdevelopment.siratumustakim.admin.tag.service;
 
+import com.ktxdevelopment.siratumustakim.admin.tag.model.dto.TagDto;
+import com.ktxdevelopment.siratumustakim.admin.tag.model.entity.Tag;
+import com.ktxdevelopment.siratumustakim.admin.tag.model.response.TagResponse;
+import com.ktxdevelopment.siratumustakim.admin.tag.repo.TagRepository;
 import com.ktxdevelopment.siratumustakim.exceptions.TagNotFoundException;
-import com.ktxdevelopment.siratumustakim.tag.model.dto.TagDto;
-import com.ktxdevelopment.siratumustakim.tag.model.entity.Tag;
-import com.ktxdevelopment.siratumustakim.tag.model.response.TagResponse;
-import com.ktxdevelopment.siratumustakim.tag.repo.TagRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;

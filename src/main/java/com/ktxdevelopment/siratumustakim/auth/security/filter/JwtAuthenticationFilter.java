@@ -1,5 +1,6 @@
-package com.ktxdevelopment.siratumustakim.auth.security.config;
+package com.ktxdevelopment.siratumustakim.auth.security.filter;
 
+import com.ktxdevelopment.siratumustakim.auth.security.service.JwtService;
 import com.ktxdevelopment.siratumustakim.auth.token.repo.TokenRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -31,6 +32,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
       filterChain.doFilter(request, response);
       return;
     }
+
     final String authHeader = request.getHeader("Authorization");
     final String jwt;
     final String userEmail;
@@ -46,14 +48,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
           .map(t -> !t.isExpired() && !t.isRevoked())
           .orElse(false);
       if (jwtService.isTokenValid(jwt, userDetails) && isTokenValid) {
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-            userDetails,
-            null,
-            userDetails.getAuthorities()
-        );
-        authToken.setDetails(
-            new WebAuthenticationDetailsSource().buildDetails(request)
-        );
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         SecurityContextHolder.getContext().setAuthentication(authToken);
       }
     }

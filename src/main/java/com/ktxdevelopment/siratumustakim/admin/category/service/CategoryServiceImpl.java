@@ -1,7 +1,7 @@
-package com.ktxdevelopment.siratumustakim.category.service;
+package com.ktxdevelopment.siratumustakim.admin.category.service;
 
-import com.ktxdevelopment.siratumustakim.category.model.entity.Category;
-import com.ktxdevelopment.siratumustakim.category.repo.CategoryRepository;
+import com.ktxdevelopment.siratumustakim.admin.category.model.entity.Category;
+import com.ktxdevelopment.siratumustakim.admin.category.repo.CategoryRepository;
 import com.ktxdevelopment.siratumustakim.exceptions.CategoryNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,11 +1,10 @@
-package com.ktxdevelopment.siratumustakim.category.repo;
+package com.ktxdevelopment.siratumustakim.admin.category.repo;
 
-import com.ktxdevelopment.siratumustakim.category.model.entity.Category;
+import com.ktxdevelopment.siratumustakim.admin.category.model.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 @Repository

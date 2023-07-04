@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratumustakim.auth.security.config;
+package com.ktxdevelopment.siratumustakim.auth.security.service;
 
 import com.ktxdevelopment.siratumustakim.auth.token.repo.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;

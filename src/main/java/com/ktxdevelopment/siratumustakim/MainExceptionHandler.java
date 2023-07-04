@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class MainExceptionHandler {
 
-//    @ExceptionHandler(value = {Throwable.class})
-//    public ResponseEntity<CustomResponseModel<String>> handleAllExceptions(Exception e) {
-//        return RestResponse.error(e, HttpStatus.INTERNAL_SERVER_ERROR);
-//    }
+    @ExceptionHandler(value = {CategoryNotFoundException.class})
+    public ResponseEntity<CustomResponseModel<String>> handleNotFoundException(Exception e) {
+        return RestResponse.error(e, HttpStatus.NOT_FOUND);
+    }
 
     @ExceptionHandler(value = {UserExistsException.class})
     public ResponseEntity<CustomResponseModel<String>> handleUserExistsException(Throwable e) {
