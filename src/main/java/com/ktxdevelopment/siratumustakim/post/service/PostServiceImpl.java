@@ -29,8 +29,9 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public List<PostLitResponse> getTrendingPosts() {
-        return null;
+    public List<PostLitResponse> getTrendingPosts() throws PostNotFoundException {
+        var posts  = postRepository.getTrendingPosts().orElseThrow(PostNotFoundException::new);
+        return posts.stream().map(PostLitDto::toResponse).collect(Collectors.toList());
     }
 
     @SneakyThrows

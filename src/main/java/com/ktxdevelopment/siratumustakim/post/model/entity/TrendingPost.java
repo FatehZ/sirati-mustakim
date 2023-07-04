@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratumustakim.admin.post.model.entity;
+package com.ktxdevelopment.siratumustakim.post.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TrendingPosts {
+public class TrendingPost {
 
     @Id
     @GeneratedValue

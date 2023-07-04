@@ -1,6 +1,8 @@
 package com.ktxdevelopment.siratumustakim.admin.tag.service;
 
 import com.ktxdevelopment.siratumustakim.admin.tag.model.response.TagResponse;
+import com.ktxdevelopment.siratumustakim.category.model.dto.CategoryDto;
+import com.ktxdevelopment.siratumustakim.tag.model.dto.TagDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,7 +10,7 @@ import java.util.List;
 
 @Service
 public interface TagService{
-    List<TagResponse> getAllTags();
+    void insertTag(TagDto tag);
 
-    TagResponse getTagByTagId(String tagId);
+    void deleteTag(String id);
 }

@@ -2,7 +2,6 @@ package com.ktxdevelopment.siratumustakim.post.repo;
 
 import com.ktxdevelopment.siratumustakim.post.model.dto.PostDto;
 import com.ktxdevelopment.siratumustakim.post.model.dto.PostLitDto;
-import com.ktxdevelopment.siratumustakim.post.model.request.PostRequestModel;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +15,6 @@ public interface PostRepository {
     Optional<PostDto> findPostFullById(@Param("postId") String postId);
 
     Optional<List<PostLitDto>> getAllPaginated(int page, int limit);
+
+    Optional<List<PostLitDto>> getTrendingPosts();
 }

@@ -1,15 +1,17 @@
 package com.ktxdevelopment.siratumustakim.admin.tag.controller;
 
 
+import com.ktxdevelopment.siratumustakim.admin.category.service.CategoryService;
 import com.ktxdevelopment.siratumustakim.admin.tag.model.response.TagResponse;
 import com.ktxdevelopment.siratumustakim.admin.tag.service.TagService;
+import com.ktxdevelopment.siratumustakim.category.model.dto.CategoryDto;
+import com.ktxdevelopment.siratumustakim.tag.model.dto.TagDto;
 import com.ktxdevelopment.siratumustakim.util.response.CustomResponseModel;
 import com.ktxdevelopment.siratumustakim.util.response.RestResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,13 +21,15 @@ public class TagController {
 
     private TagService tagService;
 
-    @GetMapping("/getAll")
-    public ResponseEntity<CustomResponseModel<List<TagResponse>>> getAllCategories() {
-        return RestResponse.ok(tagService.getAllTags());
+    @PostMapping("/add")
+    private ResponseEntity<String> insertNewTag(@RequestBody TagDto tag) {
+        tagService.insertTag(tag);
+        return ResponseEntity.ok("Added successfully");
     }
 
-    @GetMapping("/get/{tagId}")
-    public ResponseEntity<CustomResponseModel<TagResponse>> getTags(@PathVariable String tagId) {
-        return RestResponse.ok(tagService.getTagByTagId(tagId));
+    @DeleteMapping("/delete/{id}")
+    private ResponseEntity<String> deleteTag(@PathVariable String id) {
+        tagService.deleteTag(id);
+        return ResponseEntity.ok("Deleted successfully");
     }
 }

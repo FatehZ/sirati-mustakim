@@ -80,4 +80,16 @@ public class PostRepositoryImpl implements PostRepository {
             return Optional.empty();
         }
     }
+
+    @Override
+    public Optional<List<PostLitDto>> getTrendingPosts() {
+        String query = "SELECT post_id AS postId, title, subtitle " +
+                "FROM trending_posts";
+
+        try {
+            return Optional.of(jdbcTemplate.query(query, new BeanPropertyRowMapper<>(PostLitDto.class)));
+        }catch (Exception e) {
+            return Optional.empty();
+        }
+    }
 }

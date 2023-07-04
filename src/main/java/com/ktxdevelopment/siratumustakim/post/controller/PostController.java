@@ -1,6 +1,7 @@
 package com.ktxdevelopment.siratumustakim.post.controller;
 
 
+import com.ktxdevelopment.siratumustakim.exceptions.PostNotFoundException;
 import com.ktxdevelopment.siratumustakim.post.model.response.PostLitResponse;
 import com.ktxdevelopment.siratumustakim.post.model.response.PostResponse;
 import com.ktxdevelopment.siratumustakim.post.service.PostService;
@@ -21,7 +22,7 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    @GetMapping("/getAll")
+    @GetMapping("/all")
     public ResponseEntity<CustomResponseModel<List<PostLitResponse>>> getAllPostsPaginated(
             @RequestParam(name = "p", defaultValue = "0") int page,
             @RequestParam(name = "l", defaultValue = "30") int limit) {
@@ -30,18 +31,18 @@ public class PostController {
     }
 
     @GetMapping("/trending")
-    public ResponseEntity<CustomResponseModel<List<PostLitResponse>>> getTrendingPosts() {
+    public ResponseEntity<CustomResponseModel<List<PostLitResponse>>> getTrendingPosts() throws PostNotFoundException {
         return RestResponse.ok(postService.getTrendingPosts());
     }
 
 
-    @GetMapping("/{postId}")
+    @GetMapping("/get/{postId}")
     public ResponseEntity<CustomResponseModel<PostResponse>> getPostById(@PathVariable String postId) {
         return RestResponse.ok(postService.getFullPostById(postId));
     }
 
 
-    @GetMapping("/{postId}/lit")
+    @GetMapping("/get/{postId}/lit")
     public ResponseEntity<CustomResponseModel<PostLitResponse>> getLitPostById(@PathVariable String postId) {
         return RestResponse.ok(postService.getLitPostById(postId));
     }

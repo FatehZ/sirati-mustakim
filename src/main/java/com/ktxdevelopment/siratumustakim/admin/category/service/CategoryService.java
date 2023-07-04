@@ -1,16 +1,13 @@
 package com.ktxdevelopment.siratumustakim.admin.category.service;
 
-import com.ktxdevelopment.siratumustakim.admin.category.model.entity.Category;
-import com.ktxdevelopment.siratumustakim.exceptions.CategoryNotFoundException;
+import com.ktxdevelopment.siratumustakim.category.model.dto.CategoryDto;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 
 @Service
 public interface CategoryService {
 
-    List<Category> getAllCategories();
+    void insertCategory(CategoryDto category);
 
-    Category getCategoryByCategoryId(String categoryId) throws CategoryNotFoundException;
+    void deleteCategory(String id);
 }
