@@ -32,7 +32,7 @@ public class  CustomResponseModel<T> {
         this.data = null;
     }
 
-    public CustomResponseModel(Exception ex, HttpStatus status) {
+    public CustomResponseModel(Throwable ex, HttpStatus status) {
         this.status = status;
         this.error = new RestError(ex.getClass().toString(), ex.getLocalizedMessage());
         this.data = null;

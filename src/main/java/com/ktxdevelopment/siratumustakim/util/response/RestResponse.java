@@ -16,11 +16,11 @@ public class RestResponse {
         return new ResponseEntity<>(new CustomResponseModel<>(error), HttpStatus.BAD_REQUEST);
     }
 
-    public static ResponseEntity<CustomResponseModel<String>> error(Exception e, HttpStatus status) {
+    public static ResponseEntity<CustomResponseModel<String>> error(Throwable e, HttpStatus status) {
         return new ResponseEntity<>(new CustomResponseModel<>(e, status), status);
     }
 
-    public static ResponseEntity<CustomResponseModel<String>> error(Exception e) {
-        return new ResponseEntity<>(new CustomResponseModel<>(e, HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
+    public static ResponseEntity<CustomResponseModel<String>> error(Throwable e) {
+        return new ResponseEntity<>(new CustomResponseModel<>(e, HttpStatus.INTERNAL_SERVER_ERROR), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

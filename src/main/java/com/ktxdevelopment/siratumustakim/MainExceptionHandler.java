@@ -1,9 +1,6 @@
 package com.ktxdevelopment.siratumustakim;
 
-import com.ktxdevelopment.siratumustakim.exceptions.AuthRequestNotCorrectException;
-import com.ktxdevelopment.siratumustakim.exceptions.PostNotFoundException;
-import com.ktxdevelopment.siratumustakim.exceptions.UserExistsException;
-import com.ktxdevelopment.siratumustakim.exceptions.UserNotFoundException;
+import com.ktxdevelopment.siratumustakim.exceptions.*;
 import com.ktxdevelopment.siratumustakim.util.response.CustomResponseModel;
 import com.ktxdevelopment.siratumustakim.util.response.RestResponse;
 import jakarta.ws.rs.ext.Provider;
@@ -23,28 +20,33 @@ public class MainExceptionHandler {
 //    }
 
     @ExceptionHandler(value = {UserExistsException.class})
-    public ResponseEntity<CustomResponseModel<String>> handleUserExistsException(Exception e) {
+    public ResponseEntity<CustomResponseModel<String>> handleUserExistsException(Throwable e) {
         return RestResponse.error(e, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(value = UserNotFoundException.class)
-    public ResponseEntity<CustomResponseModel<String>> handleUserNotFoundException(Exception e) {
+    public ResponseEntity<CustomResponseModel<String>> handleUserNotFoundException(Throwable e) {
         return RestResponse.error(e, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(value = UsernameNotFoundException.class)
-    public ResponseEntity<CustomResponseModel<String>> handleUsernameNotFoundException(Exception e) {
+    public ResponseEntity<CustomResponseModel<String>> handleUsernameNotFoundException(Throwable e) {
         return RestResponse.error(e, HttpStatus.NOT_FOUND);
     }
 
 
     @ExceptionHandler(value = PostNotFoundException.class)
-    public ResponseEntity<CustomResponseModel<String>> handlePostNotFoundException(Exception e) {
+    public ResponseEntity<CustomResponseModel<String>> handlePostNotFoundException(Throwable e) {
         return RestResponse.error(e, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(value = AuthRequestNotCorrectException.class)
-    public ResponseEntity<CustomResponseModel<String>> handleWrongRequestException(Exception e) {
+    public ResponseEntity<CustomResponseModel<String>> handleWrongRequestException(Throwable e) {
         return RestResponse.error(e, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = ApiKeyInvalidException.class)
+    public ResponseEntity<CustomResponseModel<String>> handleInvalidAPiKeyException(Throwable e) {
+        return RestResponse.error(e, HttpStatus.UNAUTHORIZED);
     }
 }

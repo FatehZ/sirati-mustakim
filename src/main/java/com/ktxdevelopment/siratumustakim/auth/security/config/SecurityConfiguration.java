@@ -1,7 +1,9 @@
 package com.ktxdevelopment.siratumustakim.auth.security.config;
 
 
+import com.ktxdevelopment.siratumustakim.auth.security.config.authentication.ApiKeyAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -26,12 +28,15 @@ import static org.springframework.http.HttpMethod.*;
 public class SecurityConfiguration {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final ApiKeyAuthenticationFilter apiKeyAuthenticationFilter;
     private final AuthenticationProvider authenticationProvider;
     private final LogoutHandler logoutHandler;
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
+                .addFilterBefore(apiKeyAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/auth/**").permitAll()
                 .requestMatchers("/api/v1/auth/register").permitAll()
@@ -42,14 +47,14 @@ public class SecurityConfiguration {
                 .requestMatchers(PUT, "/api/v1/posts/**").permitAll()
                 .requestMatchers(DELETE, "/api/v1/posts/**").permitAll()
 
-                .requestMatchers( "/api/v1/categories/**").hasRole(GUEST.name())
-                .requestMatchers(GET, "/api/v1/categories/**").hasRole(GUEST.name())
+                .requestMatchers( "/api/v1/categories/**").permitAll()
+                .requestMatchers(GET, "/api/v1/categories/**").permitAll()
                 .requestMatchers(POST, "/api/v1/categories/**").hasRole(MANAGER.name())
                 .requestMatchers(PUT, "/api/v1/categories/**").hasRole(MANAGER.name())
                 .requestMatchers(DELETE, "/api/v1/categories/**").hasRole(MANAGER.name())
 
-                .requestMatchers( "/api/v1/tags/**").hasRole(GUEST.name())
-                .requestMatchers(GET, "/api/v1/tags/**").hasRole(GUEST.name())
+                .requestMatchers( "/api/v1/tags/**").permitAll()
+                .requestMatchers(GET, "/api/v1/tags/**").permitAll()
                 .requestMatchers(POST, "/api/v1/tags/**").hasRole(MANAGER.name())
                 .requestMatchers(PUT, "/api/v1/tags/**").hasRole(MANAGER.name())
                 .requestMatchers(DELETE, "/api/v1/tags/**").hasRole(MANAGER.name())
