@@ -1,8 +1,8 @@
 package com.ktxdevelopment.siratumustakim.admin.post.service;
 
 import com.ktxdevelopment.siratumustakim.admin.post.model.request.SetTrendingPostsRequest;
-import com.ktxdevelopment.siratumustakim.admin.post.model.response.PostLitResponse;
 import com.ktxdevelopment.siratumustakim.admin.post.model.response.PostResponse;
+import com.ktxdevelopment.siratumustakim.exceptions.PostNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,5 +19,5 @@ public interface PostService {
 
     PostLitResponse getLitPostById(String postId);
 
-    void setTrendingPosts(SetTrendingPostsRequest setTrendingPostsRequest);
+    void setTrendingPosts(SetTrendingPostsRequest setTrendingPostsRequest) throws PostNotFoundException;
 }

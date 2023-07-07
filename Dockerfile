@@ -4,10 +4,10 @@ FROM openjdk:19-jdk-alpine
 WORKDIR /app
 
 # Copy the Maven project's compiled JAR file into the container
-COPY target/sirati-mustakim.jar sirati-mustakim.jar
+COPY target/sirati-mustakim.jar /app/sirati-mustakim.jar
 
 # Expose the port on which your Spring application listens
 EXPOSE 8080
 
 # Define the command to run your application
-CMD ["java", "-jar", "sirati-mustakim.jar"]
+ENTRYPOINT ["java", "-jar", "sirati-mustakim.jar"]

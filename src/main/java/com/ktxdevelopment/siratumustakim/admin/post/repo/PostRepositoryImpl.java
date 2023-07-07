@@ -1,8 +1,6 @@
 package com.ktxdevelopment.siratumustakim.admin.post.repo;
 
 
-import com.ktxdevelopment.siratumustakim.admin.post.model.dto.PostDto;
-import com.ktxdevelopment.siratumustakim.admin.post.model.dto.PostLitDto;
 import com.ktxdevelopment.siratumustakim.admin.post.model.request.SetTrendingPostsRequest;
 import com.ktxdevelopment.siratumustakim.auth.user.model.dto.UserLitDto;
 import com.ktxdevelopment.siratumustakim.exceptions.PostNotFoundException;

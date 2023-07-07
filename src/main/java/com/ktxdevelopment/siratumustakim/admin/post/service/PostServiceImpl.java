@@ -1,8 +1,6 @@
 package com.ktxdevelopment.siratumustakim.admin.post.service;
 
-import com.ktxdevelopment.siratumustakim.admin.post.model.dto.PostLitDto;
 import com.ktxdevelopment.siratumustakim.admin.post.model.request.SetTrendingPostsRequest;
-import com.ktxdevelopment.siratumustakim.admin.post.model.response.PostLitResponse;
 import com.ktxdevelopment.siratumustakim.admin.post.model.response.PostResponse;
 import com.ktxdevelopment.siratumustakim.admin.post.repo.PostRepository;
 import com.ktxdevelopment.siratumustakim.exceptions.PostNotFoundException;
@@ -49,7 +47,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public void setTrendingPosts(SetTrendingPostsRequest setTrendingPostsRequest) {
+    public void setTrendingPosts(SetTrendingPostsRequest setTrendingPostsRequest) throws PostNotFoundException {
         postRepository.setTrendingPosts(setTrendingPostsRequest);
     }
 

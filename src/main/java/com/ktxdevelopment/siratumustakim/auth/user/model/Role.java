@@ -15,11 +15,11 @@ public enum Role {
   GUEST(Collections.emptySet()),
 
 
-  USER(Set.of("USER", GUEST.name())),
+  USER(Set.of("USER")),
 
-  MANAGER(Set.of("MANAGER" ,GUEST.name(), USER.name())),
+  MANAGER(Set.of("MANAGER", USER.name())),
 
-  ADMIN(Set.of("ADMIN", MANAGER.name(), USER.name(), GUEST.name()));
+  ADMIN(Set.of("ADMIN", MANAGER.name(), USER.name()));
 
 
   @Getter

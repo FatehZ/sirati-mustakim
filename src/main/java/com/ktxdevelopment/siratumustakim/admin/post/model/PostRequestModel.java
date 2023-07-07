@@ -1,7 +1,6 @@
-package com.ktxdevelopment.siratumustakim.admin.post.model.request;
+package com.ktxdevelopment.siratumustakim.admin.post.model;
 
 import com.ktxdevelopment.siratumustakim.admin.category.model.dto.CategoryDto;
-import com.ktxdevelopment.siratumustakim.admin.post.model.dto.PostDto;
 import com.ktxdevelopment.siratumustakim.admin.tag.model.dto.TagDto;
 import com.ktxdevelopment.siratumustakim.auth.user.model.dto.UserLitDto;
 import lombok.AllArgsConstructor;
