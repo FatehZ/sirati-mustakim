@@ -30,6 +30,9 @@ public class Category {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "image")
+    private String image;
+
     @Lazy
     @OneToMany(mappedBy = "category")
     private List<Post> posts;

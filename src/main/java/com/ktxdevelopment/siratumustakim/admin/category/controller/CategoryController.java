@@ -1,8 +1,8 @@
 package com.ktxdevelopment.siratumustakim.admin.category.controller;
 
 
+import com.ktxdevelopment.siratumustakim.admin.category.model.CategoryRequest;
 import com.ktxdevelopment.siratumustakim.admin.category.service.CategoryService;
-import com.ktxdevelopment.siratumustakim.category.model.dto.CategoryDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ public class CategoryController {
     private CategoryService categoryService;
 
   @PostMapping("/add")
-  private ResponseEntity<String> insertNewCategory(@RequestBody CategoryDto category) {
+  private ResponseEntity<String> insertNewCategory(@RequestBody CategoryRequest category) {
       categoryService.insertCategory(category);
       return ResponseEntity.ok("Added successfully");
   }

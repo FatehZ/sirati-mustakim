@@ -1,6 +1,5 @@
 package com.ktxdevelopment.siratumustakim.admin.post.model;
 
-import lombok.Data;
 
 import java.util.List;
 
