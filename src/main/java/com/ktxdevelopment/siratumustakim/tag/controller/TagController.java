@@ -21,7 +21,7 @@ public class TagController {
 
     private TagService tagService;
 
-    @GetMapping("/")
+    @GetMapping("/get")
     public ResponseEntity<CustomResponseModel<List<TagResponse>>> getAllCategories() {
         return RestResponse.ok(tagService.getAllTags());
     }

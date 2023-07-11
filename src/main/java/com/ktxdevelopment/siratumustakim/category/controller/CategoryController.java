@@ -14,19 +14,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/categories")
+@RequestMapping("/api/v1/category")
 @RequiredArgsConstructor
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping("/getAll")
+    @GetMapping("/get")
     public ResponseEntity<CustomResponseModel<List<Category>>> getAllCategories() {
         return RestResponse.ok(categoryService.getAllCategories());
     }
 
-    @GetMapping("/{categoryId}")
+    @GetMapping("/get/{categoryId}")
     public ResponseEntity<CustomResponseModel<Category>> getTrendingPosts(@PathVariable String categoryId) throws CategoryNotFoundException {
         return RestResponse.ok(categoryService.getCategoryByCategoryId(categoryId));
     }

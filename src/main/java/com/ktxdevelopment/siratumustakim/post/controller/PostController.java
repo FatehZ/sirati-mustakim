@@ -22,7 +22,7 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    @GetMapping("/all")
+    @GetMapping("/get")
     public ResponseEntity<CustomResponseModel<List<PostLitResponse>>> getAllPostsPaginated(
             @RequestParam(name = "p", defaultValue = "0") int page,
             @RequestParam(name = "l", defaultValue = "30") int limit) {

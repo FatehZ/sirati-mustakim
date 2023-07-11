@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/api/v1/admin/tags")
+@RestController("/api/v1/manager/tags")
 @RequiredArgsConstructor
 public class TagController {
 

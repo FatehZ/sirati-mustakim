@@ -38,32 +38,20 @@ public class SecurityConfiguration {
         http.csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(apiKeyAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests()
+
                 .requestMatchers("/api/v1/auth/**").permitAll()
-                .requestMatchers("/api/v1/auth/register").permitAll()
 
-                .requestMatchers( "/api/v1/posts/**").permitAll()
-                .requestMatchers(GET, "/api/v1/posts/**").permitAll()
-                .requestMatchers(POST, "/api/v1/posts/**").permitAll()
-                .requestMatchers(PUT, "/api/v1/posts/**").permitAll()
-                .requestMatchers(DELETE, "/api/v1/posts/**").permitAll()
+                .requestMatchers("/api/v1/manager/**").hasRole(MANAGER.name())
 
-                .requestMatchers( "/api/v1/categories/**").permitAll()
-                .requestMatchers(GET, "/api/v1/categories/**").permitAll()
-                .requestMatchers(POST, "/api/v1/categories/**").hasRole(MANAGER.name())
-                .requestMatchers(PUT, "/api/v1/categories/**").hasRole(MANAGER.name())
-                .requestMatchers(DELETE, "/api/v1/categories/**").hasRole(MANAGER.name())
+                .requestMatchers( "/api/v1/user/**").hasRole(USER.name())
 
-                .requestMatchers( "/api/v1/tags/**").permitAll()
-                .requestMatchers(GET, "/api/v1/tags/**").permitAll()
-                .requestMatchers(POST, "/api/v1/tags/**").hasRole(MANAGER.name())
-                .requestMatchers(PUT, "/api/v1/tags/**").hasRole(MANAGER.name())
-                .requestMatchers(DELETE, "/api/v1/tags/**").hasRole(MANAGER.name())
+                .requestMatchers("/api/v1/admin/**").hasRole(ADMIN.name())
+//
+                .requestMatchers( "/api/v1/post/**").permitAll()
 
-                .requestMatchers( "/api/v1/users/**").hasRole(MANAGER.name())
-                .requestMatchers(GET, "/api/v1/users/**").hasRole(MANAGER.name())
-                .requestMatchers(POST, "/api/v1/users/**").hasRole(ADMIN.name())
-                .requestMatchers(PUT, "/api/v1/users/**").hasRole(ADMIN.name())
-                .requestMatchers(DELETE, "/api/v1/users/**").hasRole(ADMIN.name())
+                .requestMatchers( "/api/v1/category/**").permitAll()
+
+                .requestMatchers( "/api/v1/tag/**").permitAll()
 
                 .anyRequest().authenticated()
                 .and()
