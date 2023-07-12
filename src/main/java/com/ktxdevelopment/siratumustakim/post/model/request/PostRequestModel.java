@@ -24,15 +24,9 @@ public class PostRequestModel {
     String postId;
     String title;
     String subtitle;
-    List<TagDto> tags;
-    CategoryDto category;
+    List<String> tags;
+    String category;
     String content;
-    UserLitDto author;
-    Date date;
+    String author;
     List<String> references;
-    Long viewed;
-
-    public PostDto toDto() {
-        return new PostDto(postId, title, subtitle, tags, category, content, author, java.sql.Date.valueOf(LocalDate.now()), references, 0L);
-    }
 };
