@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface PostService {
 
-
     void setTrendingPosts(SetTrendingPostsRequest setTrendingPostsRequest) throws PostNotFoundException;
 
     void insertNewPost(PostRequestModel model);

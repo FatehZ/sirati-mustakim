@@ -13,9 +13,6 @@ import lombok.NoArgsConstructor;
 public class TrendingPost {
 
     @Id
-    @GeneratedValue
-    private Integer id;
-
     @Column(name = "post_id")
     String postId;
 
