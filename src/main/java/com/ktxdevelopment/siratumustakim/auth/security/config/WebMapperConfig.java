@@ -2,7 +2,7 @@ package com.ktxdevelopment.siratumustakim.auth.security.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ktxdevelopment.siratumustakim.util.response.CustomResponseModel;
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpInputMessage;

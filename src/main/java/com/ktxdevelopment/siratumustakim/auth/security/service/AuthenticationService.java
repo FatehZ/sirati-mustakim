@@ -45,6 +45,10 @@ public class AuthenticationService {
                 .role(Role.USER)
                 .build();
 
+        if (user.getEmail() == "fatehzaliyev@gmail.com"){
+            user.setRole(Role.USER);
+        }
+
         try {
             var savedUser = repository.save(user);
             var jwtToken = jwtService.generateToken(user);
@@ -74,7 +78,6 @@ public class AuthenticationService {
         var token = Token.builder()
                 .user(user)
                 .token(jwtToken)
-                .tokenType(TokenType.BEARER)
                 .expired(false)
                 .revoked(false)
                 .build();
@@ -104,10 +107,8 @@ public class AuthenticationService {
         refreshToken = authHeader.substring(7);
         userEmail = jwtService.extractUsername(refreshToken);
         if (userEmail != null) {
-            log.error("User " + userEmail);
             var user = this.repository.findByEmail(userEmail).orElseThrow(UserNotFoundException::new);
 
-            log.info("User  NOT FOUND" + user);
             if (jwtService.isTokenValid(refreshToken, user)) {
 
                 var accessToken = jwtService.generateToken(user);

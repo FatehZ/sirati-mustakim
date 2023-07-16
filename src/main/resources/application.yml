@@ -25,6 +25,7 @@ logging:
 application:
   security:
     api-key: 38dfgjlruldmfhtlgr49340erijgnewr4wu9
+    admin-key: 22fejnfwde9e8endqdud83dwfhghwdqwkd9w98fjwf78wwf9n
     jwt:
       secret-key: 368b38111be560242ac1202439b3aa8190811ebe560242ac120002
       expiration: 172800000 # 2 days

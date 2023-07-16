@@ -1,6 +1,7 @@
 package com.ktxdevelopment.siratumustakim.auth.security.config;
 
 
+import com.ktxdevelopment.siratumustakim.auth.security.filter.AdminSecurityFilter;
 import com.ktxdevelopment.siratumustakim.auth.security.filter.ApiKeyAuthenticationFilter;
 import com.ktxdevelopment.siratumustakim.auth.security.filter.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,7 @@ public class SecurityConfiguration {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final ApiKeyAuthenticationFilter apiKeyAuthenticationFilter;
+    private final AdminSecurityFilter adminSecurityFilter;
     private final AuthenticationProvider authenticationProvider;
     private final LogoutHandler logoutHandler;
 
@@ -36,7 +38,6 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
-                .addFilterBefore(apiKeyAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests()
 
                 .requestMatchers("/api/v1/auth/**").permitAll()
@@ -58,7 +59,11 @@ public class SecurityConfiguration {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authenticationProvider(authenticationProvider)
+
+                .addFilterBefore(apiKeyAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(adminSecurityFilter, UsernamePasswordAuthenticationFilter.class)
+
                 .logout().logoutUrl("/api/v1/auth/logout")
                 .addLogoutHandler(logoutHandler)
                 .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext());

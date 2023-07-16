@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.security.sasl.AuthenticationException;
 import java.io.IOException;
 
 @Component
@@ -33,17 +34,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
       return;
     }
 
-    if (request.getServletPath().contains("/api/v1/admin")) {
-      filterChain.doFilter(request, response);
-      return;
-    }
-
     final String authHeader = request.getHeader("Authorization");
     final String jwt;
     final String userEmail;
-    if (authHeader == null ||!authHeader.startsWith("Bearer ")) {
-      filterChain.doFilter(request, response);
-      return;
+    if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+      throw new AuthenticationException();
     }
     jwt = authHeader.substring(7);
     userEmail = jwtService.extractUsername(jwt);
