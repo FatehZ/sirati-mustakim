@@ -25,26 +25,31 @@ public class Post {
     @Column(name = "post_id")
     String postId;
 
-    @Column(name = "title")
-    String title;
+    @Column(name = "title_az")
+    String title_az;
 
-    @Column(name = "subtitle")
-    String subtitle;
+    @Column(name = "title_tr")
+    String title_tr;
+
+    @Column(name = "subtitle_az")
+    String subtitle_az;
+
+    @Column(name = "subtitle_tr")
+    String subtitle_tr;
 
     @ManyToMany
-    @JoinTable(
-            name = "tag_post",
-            joinColumns = @JoinColumn(name = "post_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
+    @JoinTable(name = "tag_post", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
     List<Tag> tags;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
     Category category;
 
-    @Column(name = "content", nullable = false, columnDefinition = "TEXT")
-    String content;
+    @Column(name = "content_az", nullable = false, columnDefinition = "TEXT")
+    String content_az;
+
+    @Column(name = "content_tr", nullable = false, columnDefinition = "TEXT")
+    String content_tr;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -54,8 +59,11 @@ public class Post {
     @Column(name = "date_created")
     private Date dateCreated;
 
-    @Column(name = "reference", columnDefinition = "TEXT")
-    String references;
+    @Column(name = "reference_az", columnDefinition = "TEXT")
+    String reference_az;
+
+    @Column(name = "reference_tr", columnDefinition = "TEXT")
+    String reference_tr;
 
     @Column(name = "viewed")
     Long viewed;

@@ -23,14 +23,14 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public List<TagResponse> getAllTags() {
-        List<TagDto> tags = tagRepository.findAll(Sort.by(Sort.Direction.ASC, "title")).stream().map(Tag::toDto).toList();
+        List<TagDto> tags = tagRepository.findAll(Sort.by(Sort.Direction.ASC, "title")).stream().map(Tag::toDtoAz).toList();
         return tags.stream().map(TagDto::toResponse).collect(Collectors.toList());
     }
 
     @SneakyThrows
     @Override
     public TagResponse getTagByTagId(String tagId) {
-        var dto = tagRepository.findTagByTagId(tagId).orElseThrow(TagNotFoundException::new).toDto();
+        var dto = tagRepository.findTagByTagId(tagId).orElseThrow(TagNotFoundException::new).toDtoAz();
         return dto.toResponse();
     }
 }

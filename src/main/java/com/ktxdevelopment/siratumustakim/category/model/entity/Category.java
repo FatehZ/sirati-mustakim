@@ -23,12 +23,17 @@ public class Category {
     @Column(name = "category_id")
     private String categoryId;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "title_az")
+    private String title_az;
 
+    @Column(name = "title_tr")
+    private String title_tr;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "description_az")
+    private String description_az;
+
+    @Column(name = "description_tr")
+    private String description_tr;
 
     @Column(name = "image")
     private String image;

@@ -25,22 +25,33 @@ public class Tag {
     @Column(name = "tag_id")
     private String tagId;
 
-    @Column(name = "title")
-    private String title;
+    @Column(name = "title_az")
+    private String title_az;
+
+
+    @Column(name = "title_tr")
+    private String title_tr;
 
     @Lazy
     @ManyToMany(mappedBy = "tags")
     private List<Post> posts;
 
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "description_az")
+    private String description_az;
 
-    TagFullDto toDtoFull() {
-        return new TagFullDto(tagId, title, description, posts);
+    @Column(name = "description_tr")
+    private String description_tr;
+
+    TagFullDto toDtoFullAz() {
+        return new TagFullDto(tagId, title_az, description_az, posts);
     }
 
-    public TagDto toDto() {
-        return new TagDto(tagId, title, description);
+    public TagDto toDtoAz() {
+        return new TagDto(tagId, title_az, description_az);
+    }
+
+    public TagDto toDtoTr() {
+        return new TagDto(tagId, title_tr, description_tr);
     }
 }
