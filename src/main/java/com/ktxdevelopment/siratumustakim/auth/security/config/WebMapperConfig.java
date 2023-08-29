@@ -81,9 +81,3 @@ public class WebMapperConfig implements WebMvcConfigurer {
         }
     }
 }
-
-interface Miui{
-    String abc = "";
-
-    String interfun(String abc);
-}

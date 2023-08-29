@@ -2,7 +2,6 @@ package com.ktxdevelopment.siratumustakim.util.response;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
 import lombok.Getter;
@@ -76,13 +75,12 @@ public class  CustomResponseModel<T> {
 
     static class CustomResponseModelDeserializer<T> extends JsonDeserializer<CustomResponseModel<T>> {
         @Override
-        public CustomResponseModel<T> deserialize(JsonParser p, DeserializationContext ctxt)
-                throws IOException, JsonProcessingException {
+        public CustomResponseModel<T> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
             ObjectMapper mapper = (ObjectMapper) p.getCodec();
             JsonNode root = mapper.readTree(p);
 
             HttpStatus status = HttpStatus.valueOf(root.get("status").asText());
-            T data = mapper.readValue(root.get("data").traverse(), new TypeReference<T>() {});
+            T data = mapper.readValue(root.get("data").traverse(), new TypeReference<>() {});
             RestError error = mapper.readValue(root.get("error").traverse(), RestError.class);
 
             return new CustomResponseModel<>(status, data, error);
