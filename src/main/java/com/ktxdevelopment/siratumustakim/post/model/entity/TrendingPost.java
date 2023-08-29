@@ -16,7 +16,11 @@ public class TrendingPost {
     @Column(name = "post_id")
     String postId;
 
-    String title;
+    String title_az;
 
-    String subtitle;
+    String title_tr;
+
+    String subtitle_az;
+
+    String subtitle_tr;
 }

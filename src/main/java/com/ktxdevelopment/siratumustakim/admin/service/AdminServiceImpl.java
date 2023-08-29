@@ -19,4 +19,25 @@ public class AdminServiceImpl implements AdminService{
         user.setRole(Role.MANAGER);
         userRepository.save(user);
     }
+
+    @Override
+    public void downgradeManagerToUser(String userId) {
+        var user = userRepository.findByUserId(userId).orElseThrow();
+        user.setRole(Role.USER);
+        userRepository.save(user);
+    }
+
+    @Override
+    public void banUserAccount(String userId) {
+        var user = userRepository.findByUserId(userId).orElseThrow();
+        user.setIsBanned(true);
+        userRepository.save(user);
+    }
+
+    @Override
+    public void unbanUserAccount(String userId) {
+        var user = userRepository.findByUserId(userId).orElseThrow();
+        user.setIsBanned(false);
+        userRepository.save(user);
+    }
 }

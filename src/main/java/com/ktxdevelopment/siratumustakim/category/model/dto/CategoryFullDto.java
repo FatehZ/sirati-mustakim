@@ -18,5 +18,6 @@ public class CategoryFullDto {
     private String categoryId;
     private String title;
     private String description;
+    private String image;
     private List<PostLitDto> posts;
 }

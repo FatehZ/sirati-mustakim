@@ -1,6 +1,7 @@
 package com.ktxdevelopment.siratumustakim.manager.tag.controller;
 
 
+import com.ktxdevelopment.siratumustakim.manager.tag.model.TagRequest;
 import com.ktxdevelopment.siratumustakim.manager.tag.service.TagService;
 import com.ktxdevelopment.siratumustakim.tag.model.dto.TagDto;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ public class TagController {
     private TagService tagService;
 
     @PostMapping("/add")
-    private ResponseEntity<String> insertNewTag(@RequestBody TagDto tag) {
+    private ResponseEntity<String> insertNewTag(@RequestBody TagRequest tag) {
         tagService.insertTag(tag);
         return ResponseEntity.ok("Added successfully");
     }

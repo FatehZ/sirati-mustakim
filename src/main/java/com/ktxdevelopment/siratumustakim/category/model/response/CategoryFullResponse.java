@@ -9,5 +9,6 @@ public class CategoryFullResponse {
     private String categoryId;
     private String title;
     private String description;
+    private String image;
     private List<Post> posts;
 }

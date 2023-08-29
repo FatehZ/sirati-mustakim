@@ -24,26 +24,31 @@ public class PostController {
 
     @GetMapping("/get")
     public ResponseEntity<CustomResponseModel<List<PostLitResponse>>> getAllPostsPaginated(
-            @RequestParam(name = "p", defaultValue = "0") int page,
-            @RequestParam(name = "l", defaultValue = "30") int limit) {
-
-        return RestResponse.ok(postService.getPostsPaginated(page, limit));
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "limit", defaultValue = "30") int limit,
+            @RequestParam(name = "lang", defaultValue = "az") String lang) {
+        return RestResponse.ok(postService.getPostsPaginated(page, limit, lang));
     }
 
     @GetMapping("/trending")
-    public ResponseEntity<CustomResponseModel<List<PostLitResponse>>> getTrendingPosts() throws PostNotFoundException {
-        return RestResponse.ok(postService.getTrendingPosts());
+    public ResponseEntity<CustomResponseModel<List<PostLitResponse>>> getTrendingPosts(
+            @RequestParam(name = "lang", defaultValue = "az") String lang) throws PostNotFoundException {
+        return RestResponse.ok(postService.getTrendingPosts(lang));
     }
 
 
     @GetMapping("/get/{postId}")
-    public ResponseEntity<CustomResponseModel<PostResponse>> getPostById(@PathVariable String postId) {
-        return RestResponse.ok(postService.getFullPostById(postId));
+    public ResponseEntity<CustomResponseModel<PostResponse>> getPostById(
+            @PathVariable String postId,
+            @RequestParam(name = "lang", defaultValue = "az") String lang) {
+        return RestResponse.ok(postService.getFullPostById(postId ,lang));
     }
 
 
     @GetMapping("/get/{postId}/lit")
-    public ResponseEntity<CustomResponseModel<PostLitResponse>> getLitPostById(@PathVariable String postId) {
-        return RestResponse.ok(postService.getLitPostById(postId));
+    public ResponseEntity<CustomResponseModel<PostLitResponse>> getLitPostById(
+            @PathVariable String postId,
+            @RequestParam(name = "lang", defaultValue = "az") String lang) {
+        return RestResponse.ok(postService.getLitPostById(postId, lang));
     }
 }

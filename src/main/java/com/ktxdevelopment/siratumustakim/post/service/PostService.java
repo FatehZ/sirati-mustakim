@@ -11,11 +11,11 @@ import java.util.List;
 public interface PostService {
 
 
-    List<PostLitResponse> getPostsPaginated(int page, int limit);
+    List<PostLitResponse> getPostsPaginated(int page, int limit, String lang);
 
-    List<PostLitResponse> getTrendingPosts() throws PostNotFoundException;
+    List<PostLitResponse> getTrendingPosts(String lang) throws PostNotFoundException;
 
-    PostResponse getFullPostById(String postId);
+    PostResponse getFullPostById(String postId, String lang);
 
-    PostLitResponse getLitPostById(String postId);
+    PostLitResponse getLitPostById(String postId, String lang);
 }

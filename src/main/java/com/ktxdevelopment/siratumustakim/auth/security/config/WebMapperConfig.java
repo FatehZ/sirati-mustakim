@@ -3,6 +3,7 @@ package com.ktxdevelopment.siratumustakim.auth.security.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ktxdevelopment.siratumustakim.util.response.CustomResponseModel;
 import jakarta.validation.constraints.NotNull;
+import lombok.NonNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpInputMessage;
@@ -13,6 +14,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.io.IOException;
@@ -31,6 +33,17 @@ public class WebMapperConfig implements WebMvcConfigurer {
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(customResponseModelHttpMessageConverter());
         converters.add(new MappingJackson2HttpMessageConverter(objectMapper));
+    }
+
+    @Override
+    public void addCorsMappings(@NonNull CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("*")
+                .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .maxAge(3600);
+
+//        WebMvcConfigurer.super.addCorsMappings(registry);
     }
 
     @Bean
@@ -56,10 +69,10 @@ public class WebMapperConfig implements WebMvcConfigurer {
         }
 
         @Override
-        protected void writeInternal(@NotNull CustomResponseModel<?> customResponseModel, HttpOutputMessage outputMessage)
-                throws IOException, HttpMessageNotWritableException {
+        protected void writeInternal(@NotNull CustomResponseModel<?> customResponseModel, HttpOutputMessage outputMessage) throws IOException, HttpMessageNotWritableException {
             objectMapper.writeValue(outputMessage.getBody(), customResponseModel);
         }
+
 
         @NotNull
         @Override
@@ -67,4 +80,10 @@ public class WebMapperConfig implements WebMvcConfigurer {
             return super.getSupportedMediaTypes(clazz);
         }
     }
+}
+
+interface Miui{
+    String abc = "";
+
+    String interfun(String abc);
 }

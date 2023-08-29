@@ -14,7 +14,6 @@ public enum Role {
 
   GUEST(Collections.emptySet()),
 
-
   USER(Set.of("USER")),
 
   MANAGER(Set.of("MANAGER", USER.name())),

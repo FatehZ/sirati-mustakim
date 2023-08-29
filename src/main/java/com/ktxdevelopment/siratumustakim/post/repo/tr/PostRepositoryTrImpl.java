@@ -1,4 +1,4 @@
-package com.ktxdevelopment.siratumustakim.post.repo;
+package com.ktxdevelopment.siratumustakim.post.repo.tr;
 
 
 import com.ktxdevelopment.siratumustakim.auth.user.model.dto.UserLitDto;
@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class PostRepositoryImpl implements PostRepository {
+public class PostRepositoryTrImpl implements PostRepositoryTr {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -27,7 +27,7 @@ public class PostRepositoryImpl implements PostRepository {
     @Override
     public Optional<PostLitDto> findPostLitById(String postId) {
 
-        String query = "SELECT p.post_id AS postId, p.title, p.subtitle " +
+        String query = "SELECT p.post_id AS postId, p.title_tr as title, p.subtitle_tr as subtitle " +
                 "FROM post p " +
                 "WHERE p.postId = ?";
 
@@ -41,7 +41,7 @@ public class PostRepositoryImpl implements PostRepository {
 
     @Override
     public Optional<PostDto> findPostFullById(String postId) {
-        String query = "SELECT p.post_id AS postId, p.title, p.subtitle, u.username AS authorName, u.user_id AS authorUserId " +
+        String query = "SELECT p.post_id AS postId, p.title_tr, p.subtitle_tr, u.username AS authorName, u.user_id AS authorUserId " +
                 "FROM post p " +
                 "JOIN user u ON p.user_id = u.user_id " +
                 "WHERE p.post_id = ?";
@@ -67,7 +67,7 @@ public class PostRepositoryImpl implements PostRepository {
 
     @Override
     public Optional<List<PostLitDto>> getAllPaginated(int page, int limit) {
-        String query = "SELECT post_id AS postId, title, subtitle " +
+        String query = "SELECT post_id AS postId, title_tr as title, subtitle_tr as subtite " +
                 "FROM posts " +
                 "ORDER BY date_created " +
                 "LIMIT ? OFFSET ?";
@@ -83,8 +83,7 @@ public class PostRepositoryImpl implements PostRepository {
 
     @Override
     public Optional<List<PostLitDto>> getTrendingPosts() {
-        String query = "SELECT post_id AS postId, title, subtitle " +
-                "FROM trending_posts";
+        String query = "SELECT post_id AS postId, title_tr as title, subtitle_tr as subtitle FROM trending_posts";
 
         try {
             return Optional.of(jdbcTemplate.query(query, new BeanPropertyRowMapper<>(PostLitDto.class)));

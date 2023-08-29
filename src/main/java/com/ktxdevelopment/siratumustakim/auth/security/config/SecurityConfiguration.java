@@ -19,7 +19,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 import static com.ktxdevelopment.siratumustakim.auth.user.model.Role.*;
-import static org.springframework.http.HttpMethod.*;
 
 
 @Configuration
@@ -47,7 +46,7 @@ public class SecurityConfiguration {
                 .requestMatchers( "/api/v1/user/**").hasAnyRole(USER.name(), MANAGER.name(), ADMIN.name())
 
                 .requestMatchers("/api/v1/admin/**").hasRole(ADMIN.name())
-//
+
                 .requestMatchers( "/api/v1/post/**").permitAll()
 
                 .requestMatchers( "/api/v1/category/**").permitAll()
@@ -67,6 +66,7 @@ public class SecurityConfiguration {
                 .logout().logoutUrl("/api/v1/auth/logout")
                 .addLogoutHandler(logoutHandler)
                 .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext());
+
         return http.build();
     }
 }

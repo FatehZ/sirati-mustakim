@@ -1,15 +1,14 @@
-package com.ktxdevelopment.siratumustakim.post.repo;
+package com.ktxdevelopment.siratumustakim.post.repo.main;
 
 import com.ktxdevelopment.siratumustakim.post.model.dto.PostDto;
 import com.ktxdevelopment.siratumustakim.post.model.dto.PostLitDto;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-public interface PostRepository {
+public interface BasePostRepository {
+
     Optional<PostLitDto> findPostLitById(@Param("postId") String postId);
 
     Optional<PostDto> findPostFullById(@Param("postId") String postId);

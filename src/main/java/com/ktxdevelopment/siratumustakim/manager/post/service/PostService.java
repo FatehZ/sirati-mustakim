@@ -12,4 +12,8 @@ public interface PostService {
     void setTrendingPosts(SetTrendingPostsRequest setTrendingPostsRequest) throws PostNotFoundException;
 
     void insertNewPost(PostRequestModel model);
+
+    void addCategoryToPost(String postId, String categoryId);
+
+    void addTagToPost(String postId, String tagId);
 }

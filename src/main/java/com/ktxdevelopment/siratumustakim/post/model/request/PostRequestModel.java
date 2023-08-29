@@ -22,11 +22,15 @@ import java.util.List;
 @Builder
 public class PostRequestModel {
     String postId;
-    String title;
-    String subtitle;
+    String title_az;
+    String title_tr;
+    String subtitle_az;
+    String subtitle_tr;
     List<String> tags;
-    String category;
-    String content;
-    String author;
-    List<String> references;
+    String categoryId;
+    String content_az;
+    String content_tr;
+    String authorId;
+    List<String> references_az;
+    List<String> references_tr;
 };

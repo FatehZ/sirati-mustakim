@@ -16,11 +16,11 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-  @PostMapping("/add")
-  private ResponseEntity<String> insertNewCategory(@RequestBody CategoryRequest category) {
-      categoryService.insertCategory(category);
-      return ResponseEntity.ok("Added successfully");
-  }
+    @PostMapping("/add")
+    private ResponseEntity<String> insertNewCategory(@RequestBody CategoryRequest category) {
+        categoryService.insertCategory(category);
+        return ResponseEntity.ok("Added successfully");
+    }
 
     @DeleteMapping("/delete/{id}")
     private ResponseEntity<String> deleteCategory(@PathVariable String id) {

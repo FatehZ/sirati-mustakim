@@ -8,4 +8,9 @@ public interface AdminService {
 
     void upgradeUserToManager(String userId);
 
+    void downgradeManagerToUser(String userId);
+
+    void banUserAccount(String userId);
+
+    void unbanUserAccount(String userId);
 }

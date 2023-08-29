@@ -39,6 +39,9 @@ public class User implements UserDetails {
     @Column(name = "password", nullable = false)
     private String encryptedPassword;
 
+    @Column(name = "ban", nullable = false)
+    private Boolean isBanned = false;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
@@ -61,25 +64,21 @@ public class User implements UserDetails {
         return email;
     }
 
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
+    public String getRealUsername() {
+        return username;
     }
 
     @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
+    public boolean isAccountNonExpired() { return true; }
 
     @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
+    public boolean isAccountNonLocked() { return !isBanned; }
 
     @Override
-    public boolean isEnabled() {
-        return true;
-    }
+    public boolean isCredentialsNonExpired() { return true; }
+
+    @Override
+    public boolean isEnabled() { return !isBanned; }
 
     public User(String userId, String username, String email, String encryptedPassword, Role role) {
         this.userId = userId;

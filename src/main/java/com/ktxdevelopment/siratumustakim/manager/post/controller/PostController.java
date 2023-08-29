@@ -33,4 +33,17 @@ public class PostController {
         postService.insertNewPost(post);
         return RestResponse.ok("Set successfully");
     }
+
+    @PostMapping("/{postId}/categorify")
+    public ResponseEntity<CustomResponseModel<String>> addCategoryToPost(@PathVariable String postId, @RequestParam(name = "cid") String categoryId){
+        postService.addCategoryToPost(postId, categoryId);
+        return RestResponse.ok("Set Successfully");
+    }
+
+
+    @PostMapping("/{postId}/tagify")
+    public ResponseEntity<CustomResponseModel<String>> addTagToPost(@PathVariable String postId, @RequestParam(name = "tid") String tagId){
+        postService.addTagToPost(postId, tagId);
+        return RestResponse.ok("Set Successfully");
+    }
 }

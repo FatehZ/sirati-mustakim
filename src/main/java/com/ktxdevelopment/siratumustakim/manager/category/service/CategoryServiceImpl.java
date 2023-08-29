@@ -21,23 +21,20 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void insertCategory(CategoryRequest category) {
-
         String image;
 
         try {
             image = ImageUtils.imageToBase64(category.getImageUrl());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
+        } catch (IOException e) { throw new RuntimeException(e); }
 
         categoryRepository.save(Category.builder().categoryId(category.getCategoryId())
-                        .title(category.getTitle())
-                        .description(category.getDescription())
+                        .title_az(category.getTitle_az())
+                        .title_tr(category.getTitle_tr())
+                        .description_az(category.getDescription_az())
+                        .description_tr(category.getDescription_tr())
                         .image(image)
                         .posts(new ArrayList<>())
-                        .build()
-        );
+                        .build());
     }
 
     @Override

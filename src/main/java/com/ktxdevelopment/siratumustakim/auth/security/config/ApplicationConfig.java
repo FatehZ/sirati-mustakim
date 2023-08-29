@@ -19,33 +19,33 @@ import org.springframework.security.web.authentication.logout.LogoutHandler;
 @Configuration
 public class ApplicationConfig {
 
-  private final UserRepository repository;
+    private final UserRepository repository;
 
-  @Bean
-  public UserDetailsService userDetailsService() {
-    return username -> repository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
-  }
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return username -> repository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
 
-  @Bean
-  public AuthenticationProvider authenticationProvider() {
-    DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-    authProvider.setUserDetailsService(userDetailsService());
-    authProvider.setPasswordEncoder(passwordEncoder());
-    return authProvider;
-  }
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService());
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
 
-  @Bean
-  public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
-    return config.getAuthenticationManager();
-  }
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
+    }
 
-  @Bean
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-  @Bean
-  public LogoutHandler logoutHandler() {
-    return new LogoutService();
-  }
+    @Bean
+    public LogoutHandler logoutHandler() {
+        return new LogoutService();
+    }
 }
