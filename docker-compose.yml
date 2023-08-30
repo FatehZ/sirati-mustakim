@@ -29,35 +29,6 @@ services:
     volumes:
       - pgadmin:/var/lib/pgadmin
 
-
-#services:
-#  tmsapi:
-#    image: postgres:latest
-#    restart: unless-stopped
-#    environment:
-#      POSTGRES_USER: fatehzaliyev
-#      POSTGRES_PASSWORD: udai6chietafrFe3biFi
-#      POSTGRES_DB: tmsapi
-#    networks:
-#      - postgres
-#    volumes:
-#      - postgres:/data/postgres
-#    ports:
-#      - 5433:5432
-#
-#  pgadmin:
-#    image: dpage/pgadmin4
-#    restart: always
-#    environment:
-#      PGADMIN_DEFAULT_EMAIL: fatehzaliyev@gmail.com
-#      PGADMIN_DEFAULT_PASSWORD: ucai6chietaePak8aiFi
-#    networks:
-#      - postgres
-#    ports:
-#      - 5051:80
-#    volumes:
-#      - pgadmin:/var/lib/pgadmin
-
 networks:
   postgres:
     driver: bridge

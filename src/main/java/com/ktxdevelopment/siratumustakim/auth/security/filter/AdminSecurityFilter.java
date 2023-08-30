@@ -22,7 +22,6 @@ public class AdminSecurityFilter extends OncePerRequestFilter {
         this.apiKey = apiKey;
     }
 
-
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
         if (!request.getServletPath().contains("/api/v1/admin")) {
