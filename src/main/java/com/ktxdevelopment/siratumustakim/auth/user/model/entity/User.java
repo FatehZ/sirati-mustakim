@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Objects;
 
 
 @Setter
@@ -40,7 +39,7 @@ public class User implements UserDetails {
     private String encryptedPassword;
 
     @Column(name = "ban", nullable = false)
-    private Boolean isBanned = false;
+    private Boolean isBanned;
 
     @Enumerated(EnumType.STRING)
     private Role role;

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class MainExceptionHandler {
 
     @ExceptionHandler(value = {CategoryNotFoundException.class})
-    public ResponseEntity<CustomResponseModel<String>> handleNotFoundException(Exception e) {
+    public ResponseEntity<CustomResponseModel<String>> handleNotFoundException(Throwable e) {
         return RestResponse.error(e, HttpStatus.NOT_FOUND);
     }
 

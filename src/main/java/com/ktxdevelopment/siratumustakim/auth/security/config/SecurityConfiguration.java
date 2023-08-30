@@ -36,36 +36,36 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests()
 
-                .requestMatchers("/api/v1/auth/**").permitAll()
+        http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/api/v1/auth/**").permitAll()
 
-                .requestMatchers("/api/v1/manager/**").hasAnyRole(MANAGER.name(),ADMIN.name())
+                        .requestMatchers("/api/v1/manager/**").hasAnyRole(MANAGER.name(), ADMIN.name())
 
-                .requestMatchers( "/api/v1/user/**").hasAnyRole(USER.name(), MANAGER.name(), ADMIN.name())
+                        .requestMatchers("/api/v1/user/**").hasAnyRole(USER.name(), MANAGER.name(), ADMIN.name())
 
-                .requestMatchers("/api/v1/admin/**").hasRole(ADMIN.name())
+                        .requestMatchers("/api/v1/admin/**").hasRole(ADMIN.name())
 
-                .requestMatchers( "/api/v1/post/**").permitAll()
+                        .requestMatchers("/api/v1/post/**").permitAll()
 
-                .requestMatchers( "/api/v1/category/**").permitAll()
+                        .requestMatchers("/api/v1/category/**").permitAll()
 
-                .requestMatchers( "/api/v1/tag/**").permitAll()
+                        .requestMatchers("/api/v1/tag/**").permitAll()
 
-                .anyRequest().authenticated()
-                .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
+                        .anyRequest().authenticated()
+                ).sessionManagement((sec) -> {
+                    sec.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                })
                 .authenticationProvider(authenticationProvider)
 
                 .addFilterBefore(apiKeyAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(adminSecurityFilter, UsernamePasswordAuthenticationFilter.class)
 
-                .logout().logoutUrl("/api/v1/auth/logout")
-                .addLogoutHandler(logoutHandler)
-                .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext());
+                .logout((form) ->
+                        form.logoutUrl("/api/v1/auth/logout").addLogoutHandler(logoutHandler).logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
+                        .permitAll()
+                );
 
         return http.build();
     }

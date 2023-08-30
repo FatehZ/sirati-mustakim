@@ -1,23 +1,24 @@
 package com.ktxdevelopment.siratumustakim.manager.post.service;
 
+import com.google.gson.Gson;
 import com.ktxdevelopment.siratumustakim.auth.user.repo.UserRepository;
 import com.ktxdevelopment.siratumustakim.category.repo.CategoryRepository;
 import com.ktxdevelopment.siratumustakim.exceptions.PostNotFoundException;
+import com.ktxdevelopment.siratumustakim.manager.post.model.SetTrendingPostsRequest;
 import com.ktxdevelopment.siratumustakim.manager.post.repo.ManagerPostNativeRepository;
 import com.ktxdevelopment.siratumustakim.manager.post.repo.ManagerPostRepository;
 import com.ktxdevelopment.siratumustakim.manager.post.repo.TrendingPostRepository;
-import com.ktxdevelopment.siratumustakim.manager.post.model.SetTrendingPostsRequest;
 import com.ktxdevelopment.siratumustakim.post.model.entity.Post;
 import com.ktxdevelopment.siratumustakim.post.model.entity.TrendingPost;
 import com.ktxdevelopment.siratumustakim.post.model.request.PostRequestModel;
 import com.ktxdevelopment.siratumustakim.post.repo.az.PostRepositoryAz;
 import com.ktxdevelopment.siratumustakim.post.repo.tr.PostRepositoryTr;
 import com.ktxdevelopment.siratumustakim.tag.repo.TagRepository;
-import com.nimbusds.jose.shaded.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Date;
 
 
