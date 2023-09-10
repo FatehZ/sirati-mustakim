@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/maindb
+    username: fatehzaliyev
+    password: ucai6chietee7ak8aiFi
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddlAuto: create
+    showSql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    databasePlatform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+
+server:
+  port: 8080
+
+logging:
+  level:
+    web: DEBUG
+
+
+application:
+  security:
+    api-key: 0953be594e3832167f1f0827a2b69777e18a58e1042406cde3e63bd01edd1b6a
+    admin-key: 22fejnfwde9e8endqdud83dwfhghwdqwkd9w98fjwf78wwf9n
+    jwt:
+      secret-key: 368b38111be560242ac1202439b3aa8190811ebe560242ac120002
+      expiration: 172800000 # 2 days
+      refresh-token:
+        expiration: 1209600000 # 7 days

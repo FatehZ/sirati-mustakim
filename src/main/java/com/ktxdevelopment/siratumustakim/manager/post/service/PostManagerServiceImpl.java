@@ -24,7 +24,7 @@ import java.util.Date;
 
 @RequiredArgsConstructor
 @Service
-public class PostServiceImpl implements PostService {
+public class PostManagerServiceImpl implements PostManagerService {
 
     @Autowired ManagerPostRepository managerPostJPARepository;
     @Autowired ManagerPostNativeRepository managerPostNativeRepository;

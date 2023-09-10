@@ -2,27 +2,28 @@ package com.ktxdevelopment.siratumustakim.manager.tag.controller;
 
 
 import com.ktxdevelopment.siratumustakim.manager.tag.model.TagRequest;
-import com.ktxdevelopment.siratumustakim.manager.tag.service.TagService;
-import com.ktxdevelopment.siratumustakim.tag.model.dto.TagDto;
+import com.ktxdevelopment.siratumustakim.manager.tag.service.TagManagerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController("/api/v1/manager/tags")
 @RequiredArgsConstructor
-public class TagController {
+public class TagManagerController {
 
-    private TagService tagService;
+    @Autowired
+    private TagManagerService tagManagerService;
 
     @PostMapping("/add")
     private ResponseEntity<String> insertNewTag(@RequestBody TagRequest tag) {
-        tagService.insertTag(tag);
+        tagManagerService.insertTag(tag);
         return ResponseEntity.ok("Added successfully");
     }
 
     @DeleteMapping("/delete/{id}")
     private ResponseEntity<String> deleteTag(@PathVariable String id) {
-        tagService.deleteTag(id);
+        tagManagerService.deleteTag(id);
         return ResponseEntity.ok("Deleted successfully");
     }
 }

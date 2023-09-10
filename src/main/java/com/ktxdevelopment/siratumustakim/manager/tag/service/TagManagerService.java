@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public interface TagService{
+public interface TagManagerService {
     void insertTag(TagRequest tag);
 
     void deleteTag(String id);

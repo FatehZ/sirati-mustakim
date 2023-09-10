@@ -1,22 +1,16 @@
 package com.ktxdevelopment.siratumustakim.util.img;
 
-import org.apache.commons.io.IOUtils;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClientBuilder;
-
 import java.io.IOException;
 import java.util.Base64;
 
 public class ImageUtils {
     private static byte[] downloadImage(String imageUrl) throws IOException {
-        HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpGet httpGet = new HttpGet(imageUrl);
-        HttpResponse response = httpClient.execute(httpGet);
-        HttpEntity entity = response.getEntity();
-        return IOUtils.toByteArray(entity.getContent());
+        return null;
+//        HttpClient httpClient = HttpClientBuilder.create().build();
+//        HttpGet httpGet = new HttpGet(imageUrl);
+//        HttpResponse response = httpClient.execute(httpGet);
+//        HttpEntity entity = response.getEntity();
+//        return IOUtils.toByteArray(entity.getContent());
     }
 
     private static String convertToBase64(byte[] imageBytes) {

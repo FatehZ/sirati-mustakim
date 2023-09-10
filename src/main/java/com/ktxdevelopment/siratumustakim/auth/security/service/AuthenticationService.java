@@ -4,7 +4,6 @@ import com.ktxdevelopment.siratumustakim.auth.security.model.AuthenticationReque
 import com.ktxdevelopment.siratumustakim.auth.security.model.AuthenticationResponse;
 import com.ktxdevelopment.siratumustakim.auth.security.model.RegisterRequest;
 import com.ktxdevelopment.siratumustakim.auth.token.model.Token;
-import com.ktxdevelopment.siratumustakim.auth.token.model.TokenType;
 import com.ktxdevelopment.siratumustakim.auth.token.repo.TokenRepository;
 import com.ktxdevelopment.siratumustakim.auth.user.model.Role;
 import com.ktxdevelopment.siratumustakim.auth.user.model.entity.User;
@@ -23,6 +22,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -45,8 +45,8 @@ public class AuthenticationService {
                 .role(Role.USER)
                 .build();
 
-        if (user.getEmail() == "fatehzaliyev@gmail.com"){
-            user.setRole(Role.USER);
+        if (Objects.equals(user.getEmail(), "fatehzaliyev@gmail.com")){
+            user.setRole(Role.ADMIN);
         }
 
         try {

@@ -1,7 +1,7 @@
 package com.ktxdevelopment.siratumustakim.manager.category.service;
 
 import com.ktxdevelopment.siratumustakim.manager.category.model.CategoryRequest;
-import com.ktxdevelopment.siratumustakim.manager.category.repo.CategoryRepository;
+import com.ktxdevelopment.siratumustakim.manager.category.repo.CategoryManagerRepository;
 import com.ktxdevelopment.siratumustakim.category.model.entity.Category;
 import com.ktxdevelopment.siratumustakim.util.img.ImageUtils;
 import lombok.RequiredArgsConstructor;
@@ -14,10 +14,10 @@ import java.util.ArrayList;
 
 @RequiredArgsConstructor
 @Service
-public class CategoryServiceImpl implements CategoryService {
+public class CategoryManagerServiceImpl implements CategoryManagerService {
 
     @Autowired
-    CategoryRepository categoryRepository;
+    CategoryManagerRepository categoryManagerRepository;
 
     @Override
     public void insertCategory(CategoryRequest category) {
@@ -27,7 +27,7 @@ public class CategoryServiceImpl implements CategoryService {
             image = ImageUtils.imageToBase64(category.getImageUrl());
         } catch (IOException e) { throw new RuntimeException(e); }
 
-        categoryRepository.save(Category.builder().categoryId(category.getCategoryId())
+        categoryManagerRepository.save(Category.builder().categoryId(category.getCategoryId())
                         .title_az(category.getTitle_az())
                         .title_tr(category.getTitle_tr())
                         .description_az(category.getDescription_az())
@@ -39,6 +39,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void deleteCategory(String categoryId) {
-        categoryRepository.deleteCategoryByCategoryId(categoryId);
+        categoryManagerRepository.deleteCategoryByCategoryId(categoryId);
     }
 }

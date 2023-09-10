@@ -16,6 +16,7 @@ import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 import java.io.IOException;
 import java.util.List;
@@ -79,5 +80,10 @@ public class WebMapperConfig implements WebMvcConfigurer {
         public List<MediaType> getSupportedMediaTypes(@NotNull Class<?> clazz) {
             return super.getSupportedMediaTypes(clazz);
         }
+    }
+
+    @Bean
+    HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
+        return new HandlerMappingIntrospector();
     }
 }
